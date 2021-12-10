@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BT_AUTO_2021_PRogramming": {
+      "commandName": "Project",
+      "commandLineArgs": "abc 123 ana are mere"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    }
+  }
+}
