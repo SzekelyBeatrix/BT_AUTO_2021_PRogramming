@@ -6,6 +6,12 @@ namespace BT_AUTO_2021_PRogramming
     {
         static void Main(string[] args)
         {
+          //  Course01(args);
+            Course02(args);
+            
+        }
+        static void Course01(string[] args)
+        {
             const int MAX_SIZE = 100;
             const double PI = 3.141592;
             const int MAX_NUMBER = 5;
@@ -61,7 +67,8 @@ namespace BT_AUTO_2021_PRogramming
 
             if (number >= 0)
 
-            { Console.WriteLine("Number is positive");
+            {
+                Console.WriteLine("Number is positive");
             }
             else
             {
@@ -88,21 +95,21 @@ namespace BT_AUTO_2021_PRogramming
                     Console.WriteLine("Student passed!");
                 }
 
-                else
-                {
+            else
+            {
                 Console.WriteLine("Grade is invalid");
-                }
-                // One line if / else
-                String message = (number % 2 == 0) ? "Even" : "Odd";
-                Console.WriteLine(message);
-                if (number ==1)
-                {
+            }
+            // One line if / else
+            String message = (number % 2 == 0) ? "Even" : "Odd";
+            Console.WriteLine(message);
+            if (number == 1)
+            {
                 Console.WriteLine("Monday");
-                }
-                 if (number == 2)
-                 {
-                  Console.WriteLine("Tuesday");
-                  }
+            }
+            if (number == 2)
+            {
+                Console.WriteLine("Tuesday");
+            }
             if (number == 3)
             {
                 Console.WriteLine("Wednesday");
@@ -174,13 +181,13 @@ namespace BT_AUTO_2021_PRogramming
             }
 
             int counter = 0;
-                while (counter <= MAX_NUMBER)
+            while (counter <= MAX_NUMBER)
             {
                 Console.WriteLine("Current number is: " + counter);
                 counter++;
             }
-        // do while iti executa si daca e -1 (Current number is:0)
- 
+            // do while iti executa si daca e -1 (Current number is:0)
+
             counter = 0;
             do
             {
@@ -189,16 +196,16 @@ namespace BT_AUTO_2021_PRogramming
             }
             while (counter <= MAX_NUMBER);
 
-            for (counter = 0; counter <= MAX_NUMBER; counter++);
+            for (counter = 0; counter <= MAX_NUMBER; counter++) ;
             {
-            // Console.WriteLine("Current number is: " + counter);
-             Console.WriteLine("Current number is:{0}", counter);
+                // Console.WriteLine("Current number is: " + counter);
+                Console.WriteLine("Current number is:{0}", counter);
             }
 
             //foreach (string argument in args)
-          
-                //Console.WriteLine("The argument is: {0}", argument);
-            
+
+            //Console.WriteLine("The argument is: {0}", argument);
+
             int year = 1900;
 
             foreach (string yr in args)
@@ -236,11 +243,48 @@ namespace BT_AUTO_2021_PRogramming
                 }
             }
 
-           // else
+            // else
             //{
-              //  febDays = 28;
+            //  febDays = 28;
             //}
-            
+        }
+
+
+        static void Course02(string [] args)
+        {
+            Circle c1 = new Circle();
+            Circle c2; //c2 will be null !!
+            c1.SetRadius(10);
+            //double area = c1.GetArea();//
+            /*Console.WriteLine(c1.GetArea());*/
+            c1.PrintCircle();
+            Circle c3 = new Circle();
+            c3.SetRadius(5);
+            //Console.WriteLine(c3.GetArea());//
+            c3.PrintCircle();
+            foreach (string p in args)
+            {
+                Circle c = new Circle();
+                c.SetRadius(Double.Parse(p));
+                Square s = new Square();
+                s.SetSide(Double.Parse(p));
+                Rectangle r = new Rectangle();
+                r.SetSize(Double.Parse(p), Double.Parse(p));
+                c.PrintCircle();
+                s.PrinSquare();
+            }
+
+            Person p1 = new Person();
+            p1.SetName("Beatrix");
+            p1.SetSex('f');
+            p1.Eat();
+            p1.Run();
+            p1.Eat();
+            p1.PrintPerson();
+
+            Rectangle r1 = new Rectangle();
+            r1.SetSize(2, 3);
+            r1.PrintRectangle();
         }
     }
 }
