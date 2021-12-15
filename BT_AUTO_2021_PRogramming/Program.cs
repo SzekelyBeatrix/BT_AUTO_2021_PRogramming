@@ -6,9 +6,11 @@ namespace BT_AUTO_2021_PRogramming
     {
         static void Main(string[] args)
         {
-          //  Course01(args);
-            Course02(args);
-            
+            //  Course01(args);
+            // Course02(args);
+            // Homework01(args);
+            Course03(args);
+
         }
         static void Course01(string[] args)
         {
@@ -247,10 +249,10 @@ namespace BT_AUTO_2021_PRogramming
             //{
             //  febDays = 28;
             //}
-        }
+        } //
 
 
-        static void Course02(string [] args)
+        static void Course02(string[] args)
         {
             Circle c1 = new Circle();
             Circle c2; //c2 will be null !!
@@ -286,5 +288,130 @@ namespace BT_AUTO_2021_PRogramming
             r1.SetSize(2, 3);
             r1.PrintRectangle();
         }
+
+        static void Homework01(string[] args)
+        {
+            Console.WriteLine(args.Length);
+
+            int length = 6;
+
+            if (args.Length == 3)
+            {
+
+                float a = float.Parse(args[0]);
+
+                float b = float.Parse(args[2]);
+
+                string op = args[1];
+
+                // implement calculator logic here
+                float result = a + b;
+
+                Console.WriteLine("Result is: " + result);
+
+            }
+            else
+            {
+
+                Console.WriteLine("3 args are needed!");
+
+            }
+        }
+
+        static void Course03(string[] args)
+
+        {
+            return;
+            ComputeConversion(args);
+            CurrencyCalculator(156, "USD", 4.3734);
+            Shape s = GetShape(12, 34, 12.4, 'a', "17d");
+            //Console.WriteLine(ConcatenateStrings(args));
+            Random rnd = new Random();
+            GuessNumber(rnd.Next(1,1000));
+        }
+
+        static bool IsOddNumber(int number)
+        {
+            if (number % 2 !=0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            return number % 2 != 0;
+        }
+        static int TestValue(int testVal, int target)
+        {
+
+            if (testVal < target)
+            {
+                Console.WriteLine("Number to be guess is higher!");
+                return -1;
+            }
+            
+            if (testVal > target)
+            {
+                Console.WriteLine("Number to be guess is lower!");
+                return 1;
+            }
+            Console.WriteLine("This is the number !!");
+            return 0;
+               
+        }
+        static void GuessNumber(int n)
+        {
+            int currentNumber = 0;
+            do
+            {
+                currentNumber = int.Parse(Console.ReadLine());
+                Console.WriteLine("Number chosen is {0}", currentNumber);
+            }
+            while (TestValue(currentNumber, n) != 0);
+        }
+        static Shape GetShape(int x, int y, double a, char t, String s)
+
+        {
+            Console.WriteLine(x);
+            return new Shape();
+        }
+
+        static string ConcatenateStrings(string[]args)
+        {
+            string returnString = "";
+
+            foreach (string s in args)
+            {
+                returnString += s; //returnString = returnString + s;
+            }
+            return returnString;
+        }
+        static void ComputeConversion(string[] args)
+        {
+
+            if (args.Length != 3)
+            {
+                Console.WriteLine("The application receives only 3 parameters: amount, currency, exchange rate");
+            }
+            else
+            {
+                Console.WriteLine("{0} {1} {2}", args[0], args[1], args[2]);
+                //double amount = Double.Parse(args[0]);
+                // string currency = args[1];
+                // double conversionRate = Double.Parse(args[2]);
+                //Console.WriteLine("By converting {0} {1} into RON we obtain {2} RON", amount, currency, amount * ConversionRate);
+                CurrencyCalculator(Double.Parse(args[0]), args[1], Double.Parse(args[2]));
+
+            }
+            CurrencyCalculator(156, "USD", 4.3734);
+        }
+
+        static void CurrencyCalculator(double amount, string currency, double ConversionRate)
+        {
+            Console.WriteLine("By converting {0} {1} into RON we obtain {2} RON", amount, currency, amount * ConversionRate);
+        }
+
     }
+    
 }
