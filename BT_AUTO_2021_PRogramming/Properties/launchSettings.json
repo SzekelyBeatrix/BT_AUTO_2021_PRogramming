@@ -2,7 +2,7 @@
   "profiles": {
     "BT_AUTO_2021_PRogramming": {
       "commandName": "Project",
-      "commandLineArgs": "100 EUR 4 96"
+      "commandLineArgs": "1000 52 466 48.5"
     },
     "WSL": {
       "commandName": "WSL2",

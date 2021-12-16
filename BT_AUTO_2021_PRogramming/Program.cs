@@ -8,8 +8,8 @@ namespace BT_AUTO_2021_PRogramming
         {
             //  Course01(args);
             // Course02(args);
-            // Homework01(args);
-            Course03(args);
+            Homework01(args);
+            //Course03(args);
 
         }
         static void Course01(string[] args)
@@ -293,8 +293,6 @@ namespace BT_AUTO_2021_PRogramming
         {
             Console.WriteLine(args.Length);
 
-            int length = 6;
-
             if (args.Length == 3)
             {
 
@@ -303,11 +301,31 @@ namespace BT_AUTO_2021_PRogramming
                 float b = float.Parse(args[2]);
 
                 string op = args[1];
+                float result = 0;
+
 
                 // implement calculator logic here
-                float result = a + b;
-
-                Console.WriteLine("Result is: " + result);
+                switch (op)
+                {
+                    case "+":
+                        result = a + b;
+                        break;
+                    case "-":
+                        result = a - b;
+                        break;
+                    case "*":
+                        result = a * b;
+                        break;
+                    case "/":
+                        result = a / b;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Operation");
+                        break;
+                        
+                }
+                if (result !=0)
+               Console.WriteLine("Result is: " + result);
 
             }
             else
@@ -316,6 +334,37 @@ namespace BT_AUTO_2021_PRogramming
                 Console.WriteLine("3 args are needed!");
 
             }
+
+            int sum = 0;
+            for (int i = 1; i <= 100; i++)
+                sum += i;
+            Console.WriteLine("Sum of first 100 numbers higher than 0 is: " + sum);
+
+            int nr = int.Parse(Console.ReadLine());
+            int cNr = nr;
+            int newNr = 0;
+            while (nr !=0)
+            {
+                newNr = newNr * 10 + nr % 10;
+                nr = nr / 10;
+            }
+
+            if (cNr == newNr)
+                Console.WriteLine("The number is palindrome");
+            else
+                Console.WriteLine("The number is not palindrome");
+
+            int number = int.Parse(Console.ReadLine());
+            for (int i = number; i >= 2; i--)
+            {
+                int prim = 1;
+                for (int d = 2; d <= i / 2; d++)
+                    if (i % d == 0)
+                        prim = 0;
+                if (prim == 1)
+                    Console.WriteLine(i);
+            }
+
         }
 
         static void Course03(string[] args)
@@ -329,10 +378,9 @@ namespace BT_AUTO_2021_PRogramming
             Random rnd = new Random();
             GuessNumber(rnd.Next(1,1000));
         }
-
         static bool IsOddNumber(int number)
         {
-            if (number % 2 !=0)
+            if (number % 2 != 0)
             {
                 return true;
             }
@@ -350,7 +398,7 @@ namespace BT_AUTO_2021_PRogramming
                 Console.WriteLine("Number to be guess is higher!");
                 return -1;
             }
-            
+
             if (testVal > target)
             {
                 Console.WriteLine("Number to be guess is lower!");
@@ -358,7 +406,7 @@ namespace BT_AUTO_2021_PRogramming
             }
             Console.WriteLine("This is the number !!");
             return 0;
-               
+
         }
         static void GuessNumber(int n)
         {
@@ -377,7 +425,7 @@ namespace BT_AUTO_2021_PRogramming
             return new Shape();
         }
 
-        static string ConcatenateStrings(string[]args)
+        static string ConcatenateStrings(string[] args)
         {
             string returnString = "";
 
@@ -411,6 +459,7 @@ namespace BT_AUTO_2021_PRogramming
         {
             Console.WriteLine("By converting {0} {1} into RON we obtain {2} RON", amount, currency, amount * ConversionRate);
         }
+
 
     }
     
