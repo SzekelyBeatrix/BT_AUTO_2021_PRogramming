@@ -8,10 +8,18 @@ namespace BT_AUTO_2021_PRogramming
     {
         double length;
         double width;
-        public Rectangle (double length, double width)
+        public Rectangle(double length, double width)
         {
-
+            this.length = length;
+            this.width = width;
         }
+
+        public Rectangle ()
+        {
+             
+        }
+
+    
         public void SetSize(double length, double width)
         {
             this.length = length;
@@ -26,6 +34,8 @@ namespace BT_AUTO_2021_PRogramming
         public void PrintRectangle()
         {
             Console.WriteLine("The rectangle with length {0} and width {1} has area {2}", length, width, GetArea());
+        
         }
+    
     }
 }

@@ -251,7 +251,6 @@ namespace BT_AUTO_2021_PRogramming
             //}
         } //
 
-
         static void Course02(string[] args)
         {
             Circle c1 = new Circle();
@@ -269,11 +268,11 @@ namespace BT_AUTO_2021_PRogramming
                 Circle c = new Circle();
                 c.SetRadius(Double.Parse(p));
                 Square s = new Square();
-                s.SetSide(Double.Parse(p));
+                //s.SetSide(Double.Parse(p));
                 Rectangle r = new Rectangle();
                 r.SetSize(Double.Parse(p), Double.Parse(p));
                 c.PrintCircle();
-                s.PrinSquare();
+                s.PrintSquare();
             }
 
             Person p1 = new Person();
@@ -474,9 +473,12 @@ namespace BT_AUTO_2021_PRogramming
             c2.PrintCircle();
 
             Person p1 = new Person();
-            Person p2 = new Person("Beatrix", 'f', new string[] { "Romanian" }, false, new DateTime());
+            Person p2 = new Person("Beatrix", 'f', new String[] { "Romanian" }, false, new DateTime());
             p1.PrintPerson();
             p2.PrintPerson();
+        
+         
+        
 
             Rectangle r1 = new Rectangle(2, 7);
             r1.PrintRectangle();
@@ -491,7 +493,7 @@ namespace BT_AUTO_2021_PRogramming
 
             StructExample.Rectangle3d r2 = new StructExample.Rectangle3d();
             r2.Assign(2, 5, 7);
-            Console.WriteLine(r2.GetVolume())
+            Console.WriteLine(r2.GetVolume());
 
         }
         public static void DrawFullShape(int width, int height)

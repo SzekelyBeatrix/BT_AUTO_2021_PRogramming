@@ -8,7 +8,7 @@ namespace BT_AUTO_2021_PRogramming
     {
         double side;
 
-        public void SetSide(double side)
+        public Square(double side)
         {
             this.side = side;
         }
@@ -21,7 +21,7 @@ namespace BT_AUTO_2021_PRogramming
             return Math.Pow(side, 2);
         }
 
-        public void PrinSquare()
+        public void PrintSquare()
         {
             Console.WriteLine("The square with side {0} has the area {1}", side, GetArea());
         }
