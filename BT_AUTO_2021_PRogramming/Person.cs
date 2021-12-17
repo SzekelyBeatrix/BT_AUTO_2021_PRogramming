@@ -12,6 +12,21 @@ namespace BT_AUTO_2021_PRogramming
         bool isHungry;
         DateTime dob;
 
+        public Person(string name, char sex, string[] nationality, bool isHungry, DateTime dob )
+        {
+            this.name = name;
+            this.sex = sex;
+            this.nationality = nationality;
+            this.isHungry = isHungry;
+            this.dob = dob;
+        }
+        public Person()
+        {
+        
+        }
+
+        }
+
        public void Eat()
         {
             Console.WriteLine("The person is eating...");

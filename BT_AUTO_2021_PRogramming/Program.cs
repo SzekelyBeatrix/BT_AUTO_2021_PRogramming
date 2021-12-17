@@ -8,9 +8,9 @@ namespace BT_AUTO_2021_PRogramming
         {
             //  Course01(args);
             // Course02(args);
-            Homework01(args);
+            // Homework01(args);
             //Course03(args);
-
+            Course04();
         }
         static void Course01(string[] args)
         {
@@ -322,10 +322,10 @@ namespace BT_AUTO_2021_PRogramming
                     default:
                         Console.WriteLine("Invalid Operation");
                         break;
-                        
+
                 }
-                if (result !=0)
-               Console.WriteLine("Result is: " + result);
+                if (result != 0)
+                    Console.WriteLine("Result is: " + result);
 
             }
             else
@@ -343,7 +343,7 @@ namespace BT_AUTO_2021_PRogramming
             int nr = int.Parse(Console.ReadLine());
             int cNr = nr;
             int newNr = 0;
-            while (nr !=0)
+            while (nr != 0)
             {
                 newNr = newNr * 10 + nr % 10;
                 nr = nr / 10;
@@ -376,7 +376,7 @@ namespace BT_AUTO_2021_PRogramming
             Shape s = GetShape(12, 34, 12.4, 'a', "17d");
             //Console.WriteLine(ConcatenateStrings(args));
             Random rnd = new Random();
-            GuessNumber(rnd.Next(1,1000));
+            GuessNumber(rnd.Next(1, 1000));
         }
         static bool IsOddNumber(int number)
         {
@@ -460,7 +460,109 @@ namespace BT_AUTO_2021_PRogramming
             Console.WriteLine("By converting {0} {1} into RON we obtain {2} RON", amount, currency, amount * ConversionRate);
         }
 
+        static void Course04()
+        {
+            DrawFullShape(5, 3);
+            Console.WriteLine();
+            DrawFullShape(5, 3);
+            Console.WriteLine();
+            DrawShapeOutline(14, 22);
 
+            Circle c1 = new Circle(); // instantiate c1 with default (no params) constructor
+            Circle c2 = new Circle(10); // instantiate c2 with 1 params constructor
+            c1.PrintCircle();
+            c2.PrintCircle();
+
+            Person p1 = new Person();
+            Person p2 = new Person("Beatrix", 'f', new string[] { "Romanian" }, false, new DateTime());
+            p1.PrintPerson();
+            p2.PrintPerson();
+
+            Rectangle r1 = new Rectangle(2, 7);
+            r1.PrintRectangle();
+
+            Square s1 = new Square(6);
+            s1.PrintSquare();
+
+            StructExample se = new StructExample();
+            StructExample.MyStruct myStruct = new StructExample.MyStruct();
+            myStruct.Assign(10, "abc");
+            Console.WriteLine(myStruct.ComputeSum());
+
+            StructExample.Rectangle3d r2 = new StructExample.Rectangle3d();
+            r2.Assign(2, 5, 7);
+            Console.WriteLine(r2.GetVolume())
+
+        }
+        public static void DrawFullShape(int width, int height)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                for (int i = 0; i < width; i++) ///this will print a single line with *
+
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+
+        }
+        public static void DrawShapeOutline(int width, int height)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                for (int i = 0; i < width; i++) ///this will print a single line with *
+
+                {
+                    if (j == 0 || j == height - 1)
+                    {
+                        Console.Write("*");
+                    }
+                    else
+                    {
+                        if (i == 0 || i == width - 1)
+                        {
+                            Console.Write("*");
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+
+
+        }
+        public static void DrawShapeCorners(int width, int height)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                for (int i = 0; i < width; i++) ///this will print a single line with *
+
+                {
+                    //if (j == 0 && i==0) || (j==0 && i=width-1) || (j==height-1 || i ==0) || (j==height-1 && i==width-1))
+                    if (j == 0 || j == height - 1)
+                    {
+                        if (i == 0 || i == width - 1)
+                        {
+                            Console.Write("*");
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
     }
-    
 }
+

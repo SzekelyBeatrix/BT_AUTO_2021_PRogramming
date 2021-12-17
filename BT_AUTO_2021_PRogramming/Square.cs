@@ -12,6 +12,10 @@ namespace BT_AUTO_2021_PRogramming
         {
             this.side = side;
         }
+        public Square()
+        {
+
+        }
         public double GetArea()
         {
             return Math.Pow(side, 2);
