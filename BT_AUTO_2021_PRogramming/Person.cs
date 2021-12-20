@@ -53,5 +53,6 @@ namespace BT_AUTO_2021_PRogramming
             Console.WriteLine("-> Current state for hungry is {0}", isHungry);
             Console.WriteLine("-> Person sex is {0}", sex);
         }
+       
     }
 }

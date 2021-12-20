@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BT_AUTO_2021_PRogramming
 {
-    class Square
+    class Square : Rectangle
     {
         double side;
 
@@ -16,9 +16,14 @@ namespace BT_AUTO_2021_PRogramming
         {
 
         }
-        public double GetArea()
+        public void SetSide(double side)
+        {
+            this.side = side;
+        }
+        public override double GetArea()
         {
             return Math.Pow(side, 2);
+           
         }
 
         public void PrintSquare()
