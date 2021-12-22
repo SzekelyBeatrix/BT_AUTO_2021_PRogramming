@@ -11,7 +11,8 @@ namespace BT_AUTO_2021_PRogramming
             // Homework01(args);
             //Course03(args);
             //Course04();
-            Course05();
+            //Course05();
+            Course06();
         }
         static void Course01(string[] args)
         {
@@ -409,6 +410,7 @@ namespace BT_AUTO_2021_PRogramming
 
 
         }
+        
         static bool IsOddNumber(int number)
         {
             if (number % 2 != 0)
@@ -609,6 +611,38 @@ namespace BT_AUTO_2021_PRogramming
         public static void DrawShapeCorners (int l)
         {
             DrawShapeCorners(l);
+        }
+
+        private static void Course06()
+        {
+            Car1 c1 = new Car1(true, 20, 90);
+            Car1 c2 = new Car1(false, 0, -90);
+            c1.Start();
+            c1.Accelerate();
+            c1.TurnLeft();
+            c1.TurnRight();
+
+            Console.WriteLine(Car1.ConvertHpToKw(150));
+
+            Rectangle r1 = new Rectangle(3, 4);
+            Console.WriteLine("Area is {0} Perimeter is {1} Diagonal is {2}", r1.GetArea(), r1.GetPerimeter(), r1.GetDiagonal());
+            r1.PrintRectangle();
+
+            r1.SetLenght(10);
+            r1.PrintRectangle();
+
+            c2.Start();
+            c2.GerUp();
+            c2.Accelerate(20);
+            c2.Steer(20);
+            c2.Accelerate(10);
+            c2.TurnLeft();
+            c2.GerUp();
+            c2.Accelerate();
+            c2.PrintCar();
+
+            c2.CarBrand = "Name";
+
         }
     }
 }

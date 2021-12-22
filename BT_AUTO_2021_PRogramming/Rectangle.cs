@@ -19,6 +19,21 @@ namespace BT_AUTO_2021_PRogramming
              
         }
 
+        public double GetLength()
+        {
+            return length;
+        }
+        public void SetLenght(double length)
+        {
+            if (length > 0)
+            {
+                this.length = length;
+            }
+            else
+            {
+
+            }
+        }
     
         public void SetSize(double length, double width)
         {
@@ -40,5 +55,15 @@ namespace BT_AUTO_2021_PRogramming
         {
             return "This is a rectangle with" + width + "width and" + length + "length!!";
         }
+        public virtual double GetPerimeter()
+        {
+            return 2 * (length + width);
+        }
+
+        public virtual double GetDiagonal()
+        {
+            return Math.Sqrt(Math.Pow(width, 2) + Math.Pow(length, 2));
+        }
+
     }
 }
