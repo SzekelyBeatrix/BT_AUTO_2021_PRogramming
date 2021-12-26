@@ -22,12 +22,16 @@ namespace BT_AUTO_2021_PRogramming
 
         public void SetName(string authorName)
         {
-            name = authorName;
+            this.name = authorName;
         }
 
         public void SetEmail(string email)
         {
             this.email = email;
+        }
+        public string GetName()
+        {
+            return this.name;
         }
 
         public void PrintAuthor()

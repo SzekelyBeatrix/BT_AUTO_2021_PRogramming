@@ -652,7 +652,7 @@ namespace BT_AUTO_2021_PRogramming
             a1.SetEmail ("dalecarnegie@gmail.com");
             a1.PrintAuthor();
 
-           Book b1 = new Book("How to Win Friends and Influence People", 1936, Author.name, 45);
+           Book b1 = new Book("How to Win Friends and Influence People", 1936,a1, 45);
            b1.PrintBook();
 
         }

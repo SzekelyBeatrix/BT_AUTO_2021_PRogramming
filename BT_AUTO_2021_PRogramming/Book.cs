@@ -40,7 +40,7 @@ namespace BT_AUTO_2021_PRogramming
         {
         Console.WriteLine("The name of the book is {0}", name);
         Console.WriteLine("The year of the book is {0}", year);
-        Console.WriteLine("The author of the book is {0}", Author);
+        Console.WriteLine("The author of the book is {0}", Author.GetName());
         Console.WriteLine("The price of the book is {0}", price);
         }
     }
