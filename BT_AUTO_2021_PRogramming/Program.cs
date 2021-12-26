@@ -12,7 +12,8 @@ namespace BT_AUTO_2021_PRogramming
             //Course03(args);
             //Course04();
             //Course05();
-            Course06();
+            //Course06();
+            Library();
         }
         static void Course01(string[] args)
         {
@@ -367,7 +368,6 @@ namespace BT_AUTO_2021_PRogramming
             }
 
         }
-
         static void Course03(string[] args)
 
         {
@@ -615,14 +615,14 @@ namespace BT_AUTO_2021_PRogramming
 
         private static void Course06()
         {
-            Car1 c1 = new Car1(true, 20, 90);
-            Car1 c2 = new Car1(false, 0, -90);
+            Car c1 = new Car(true, 20, 90);
+            Car c2 = new Car(false, 0, -90);
             c1.Start();
             c1.Accelerate();
             c1.TurnLeft();
             c1.TurnRight();
 
-            Console.WriteLine(Car1.ConvertHpToKw(150));
+            Console.WriteLine(Car.ConvertHpToKw(150));
 
             Rectangle r1 = new Rectangle(3, 4);
             Console.WriteLine("Area is {0} Perimeter is {1} Diagonal is {2}", r1.GetArea(), r1.GetPerimeter(), r1.GetDiagonal());
@@ -642,6 +642,18 @@ namespace BT_AUTO_2021_PRogramming
             c2.PrintCar();
 
             c2.CarBrand = "Name";
+
+        }
+
+        static void Library()
+        {
+            Author a1 = new Author();
+            a1.SetName("Dale Carnegie");
+            a1.SetEmail ("dalecarnegie@gmail.com");
+            a1.PrintAuthor();
+
+           Book b1 = new Book("How to Win Friends and Influence People", 1936, Author.name, 45);
+           b1.PrintBook();
 
         }
     }
