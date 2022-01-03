@@ -6,10 +6,10 @@ namespace BT_AUTO_2021_PRogramming
 {
     class Book
     {
-        string name;
-        int year;
-        Author Author;
-        double price;
+       public string name;
+       public int year;
+       public Author Author;
+       public double price;
 
         public Book(string name, int year, Author Author, double price)
         {
@@ -43,5 +43,7 @@ namespace BT_AUTO_2021_PRogramming
         Console.WriteLine("The author of the book is {0}", Author.GetName());
         Console.WriteLine("The price of the book is {0}", price);
         }
+
+
     }
 }

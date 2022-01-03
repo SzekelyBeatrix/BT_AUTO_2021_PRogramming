@@ -13,7 +13,12 @@ namespace BT_AUTO_2021_PRogramming
             //Course04();
             //Course05();
             //Course06();
-            Library();
+            //Library();
+            Homework03(args);
+
+        
+
+
         }
         static void Course01(string[] args)
         {
@@ -655,6 +660,14 @@ namespace BT_AUTO_2021_PRogramming
            Book b1 = new Book("How to Win Friends and Influence People", 1936,a1, 45);
            b1.PrintBook();
 
+        }
+        static void Homework03(string[] args)
+        {
+            Cube.GetVolCube();
+            Sphere.GetVolSphere();
+            Pyramid.GetVolPyramid();
+            Cylinder.GetVolCylinder();
+            Torus.GetVolTorus();
         }
     }
 }
