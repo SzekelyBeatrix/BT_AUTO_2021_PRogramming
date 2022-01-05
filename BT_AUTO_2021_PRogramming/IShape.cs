@@ -12,7 +12,7 @@ namespace BT_AUTO_2021_PRogramming
         //This is valid for C# >= versiune 8.0
        void State()
         {
-            Console.WriteLine("State of theShape");
+            Console.WriteLine("State of the Shape");
         }
 
     }

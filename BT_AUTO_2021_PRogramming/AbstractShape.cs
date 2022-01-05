@@ -6,7 +6,8 @@ namespace BT_AUTO_2021_PRogramming
 {
     abstract class AbstractShape : IShape
     {
-        public abstract Draw();
+        int x = 0;
+        public abstract void Draw();
         public abstract void Color();
 
         public void DoSmething()

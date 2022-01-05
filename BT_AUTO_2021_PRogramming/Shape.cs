@@ -12,7 +12,7 @@ namespace BT_AUTO_2021_PRogramming
         {
 
         }
-        public sealed override void Draw()
+        public override void Draw()
         {
             Console.WriteLine("We are drawing a shape");
         }
@@ -33,18 +33,9 @@ namespace BT_AUTO_2021_PRogramming
             return "This is a generic shape";
         }
 
-        public void Color()
-        {
-            Console.WriteLine("Drawing a color!");
-        }
-        public override void State()
-        {
-
-        }
-
         public override void Color()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Coloring a shape!");
         }
         
     }

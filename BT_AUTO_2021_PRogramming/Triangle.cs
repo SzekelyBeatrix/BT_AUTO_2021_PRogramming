@@ -19,6 +19,11 @@ namespace BT_AUTO_2021_PRogramming
         }
         public void FlipVertical() { }
 
+        public void FlipHorizontal()
+        {
+
+        }
+
         public override string ToString()
         {
             return "The triangle has the following sizes: " + l1 + " " + l2 +" " + l3 + " ";

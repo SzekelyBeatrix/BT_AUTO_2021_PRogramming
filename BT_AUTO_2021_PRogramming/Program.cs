@@ -683,51 +683,26 @@ namespace BT_AUTO_2021_PRogramming
             IShape r2 = new Rectangle();
             IShape sh2 = new Shape();
 
-            //without polymorphism - do not do this!
-
-            Shape s3 = new Square();
-            Shape r3 = new Rectangle();
-            Shape sh3 = new Shape();
-
-            switch (type)
-            {
-                case "square":
-                    {
-                        s3.Draw();
-                        break;
-                    }
-                case "rectangle":
-                    {
-                        r3.Draw();
-                        break;
-                    }
-                default:
-                    {
-                        sh3.Draw();
-                        break;
-                    }
-
-            }
-
             List<string> lista = new List<string>();
-            List<Shape> shapeList = new List<Shape>();
+            List<IShape> shapeList = new List<IShape>();
             shapeList.Add(s2);
             shapeList.Add(r2);
             shapeList.Add(sh2);
-            shapeList.Add(s1);
+            shapeList.Add(s1); 
 
             s1.Draw();
             s2.Draw();
             s2.State();
-            ((AbstractShape)s2).DoSomething();
+
+            ((AbstractShape)s2).DoSmething();
 
             s1.PrintSquare();
             ((Square)s2).PrintSquare();
-
+            // exemple of using polymorphism 
             Shape sh3;
             string type = "rectangle";
 
-            switch(type)
+            switch (type)
             {
                 case "square":
                     {
@@ -745,10 +720,62 @@ namespace BT_AUTO_2021_PRogramming
                         break;
                     }
                     sh3.Draw();
+                    sh3.Erase();
+            }
+                    //without polymorphism - do not do this!
+
+            Shape s3 = new Square();
+            Shape r3 = new Rectangle();
+            Shape sh4 = new Shape();
+
+            switch (type)
+            {
+                case "square":
+                    {
+                        s3.Draw();
+                        break;
+                    }
+                case "rectangle":
+                    {
+                        r3.Draw();
+                        break;
+                    }
+                default:
+                    {
+                        sh4.Draw();
+                        break;
+                    }
+               switch (type)
+                    {
+                        case "square":
+                            {
+                                s3.Erase();
+                                break;
+                            }
+                        case "rectangle":
+                            {
+                                r3.Erase();
+                                break;
+                            }
+                        default:
+                            {
+                                sh4.Erase();
+                                break;
+                            }
+
+               }
+                    IIntf ob1 = new MyParticularShape();
+                    IClass ob2 = new MyParticularShape();
+                    ob1.Print();
+                    ob2.Print();
 
                     PartialClass pc = new PartialClass();
                     pc.Methode1();
-                    pc.Methode2();
+                    pc.Method2();
+
+                    PartialClass pc = new PartialClass();
+                    pc.Methode1();
+                    pc.Method2();
             }
 
         }
