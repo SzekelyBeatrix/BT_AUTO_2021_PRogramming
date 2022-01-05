@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BT_AUTO_2021_PRogramming
 {
-    class Square : Rectangle
+    sealed class Square : Rectangle
     {
         double side;
 
@@ -29,6 +29,14 @@ namespace BT_AUTO_2021_PRogramming
         public void PrintSquare()
         {
             Console.WriteLine("The square with side {0} has the area {1}", side, GetArea());
+        }
+        public override string ToString()
+        {
+            return "This is a square with side " + side;
+        }
+        public override void Draw()
+        {
+            Console.WriteLine("Draqing a square!");
         }
     }
 }

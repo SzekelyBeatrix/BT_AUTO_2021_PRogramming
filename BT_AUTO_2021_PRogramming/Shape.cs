@@ -4,10 +4,15 @@ using System.Text;
 
 namespace BT_AUTO_2021_PRogramming
 {
-    class Shape
+    sealed class Shape : AbstractShape
     {
         ConsoleColor color;
-        public virtual void Draw()
+
+        protected void Test()
+        {
+
+        }
+        public sealed override void Draw()
         {
             Console.WriteLine("We are drawing a shape");
         }
@@ -28,6 +33,20 @@ namespace BT_AUTO_2021_PRogramming
             return "This is a generic shape";
         }
 
+        public void Color()
+        {
+            Console.WriteLine("Drawing a color!");
+        }
+        public override void State()
+        {
+
+        }
+
+        public override void Color()
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 
 }

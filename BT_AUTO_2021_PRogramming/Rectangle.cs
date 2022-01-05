@@ -64,6 +64,9 @@ namespace BT_AUTO_2021_PRogramming
         {
             return Math.Sqrt(Math.Pow(width, 2) + Math.Pow(length, 2));
         }
-
+        public override void Draw()
+        {
+            Console.WriteLine("Drawing a rectangle!");
+        }
     }
 }
