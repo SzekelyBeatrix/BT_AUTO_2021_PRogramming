@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BT_AUTO_2021_PRogramming
 {
-    sealed class Shape : AbstractShape
+     class Shape : AbstractShape
     {
         ConsoleColor color;
 

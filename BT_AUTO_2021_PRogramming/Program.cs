@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BT_AUTO_2021_PRogramming
 {
@@ -763,7 +764,7 @@ namespace BT_AUTO_2021_PRogramming
                                 break;
                             }
 
-               }
+                      }
                     IIntf ob1 = new MyParticularShape();
                     IClass ob2 = new MyParticularShape();
                     ob1.Print();
@@ -773,9 +774,6 @@ namespace BT_AUTO_2021_PRogramming
                     pc.Methode1();
                     pc.Method2();
 
-                    PartialClass pc = new PartialClass();
-                    pc.Methode1();
-                    pc.Method2();
             }
 
         }
