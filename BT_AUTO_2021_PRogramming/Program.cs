@@ -5,6 +5,13 @@ namespace BT_AUTO_2021_PRogramming
 {
     class Program
     {
+        public enum Browsers
+        {
+            Chrome,
+            Firefox,
+            Edge
+
+        }
         static void Main(string[] args)
         {
             //  Course01(args);
@@ -16,7 +23,8 @@ namespace BT_AUTO_2021_PRogramming
             //Course06();
             //Library();
             //Homework03(args);
-            Course07();
+            //Course07();
+            Course08();
 
         
 
@@ -775,6 +783,97 @@ namespace BT_AUTO_2021_PRogramming
                     pc.Method2();
 
             }
+
+        }
+
+        static void Course08()
+        {
+            Person p = new Person("Ionel", "Ionescu", "Strada Margelelor nr2", "Vartop", "RO");
+            Employee e = new Employee("Madakuku", "Makao", "-", "Ananarivo", "Madagascar", 1500);
+            PartTimeEmployee pe = new PartTimeEmployee("Andrei", "Antonescu", "Str Unirii nr2","Iasi" "RO", 1000);
+
+            Person.PrintPersonStatic(p);
+            Employee.PrintPersonStatic(e);
+            PartTimeEmployee.PrintPersonStatic(pe);
+
+            int[] intArray = new int[5] { 1, 2, 3, 4, 5 };
+            Shape s1 = new Shape();
+            Rectangle r1 = new Rectangle();
+            Shape[] shapes = new Shape[2] { s1, r1 };
+
+            foreach (int x in intArray)
+            {
+                Console.WriteLine(x);
+            }
+            for (int i = 0; i <intArray.Length; i ++)
+            {
+                Console.WriteLine(intArray[i]);
+            }
+            List<string> myList = new List<string>();
+            myList.Add("Beatrix");
+            myList.Add("Alex");
+            myList.Add("Andrei");
+
+            Console.WriteLine(myList.IndexOf("Alex"));
+            Console.WriteLine(myList[1]);
+
+            String stringDemo = "ana are mere"; //a:3, n:1, r:2,e:3, m:1
+            Dictionary<char, int> characterFreq = new Dictionary<char, int>();
+            foreach(char c in stringDemo) // ia caracter cu caracter a, n, a, ,a,r,e, ,m,e,r,e
+            {
+               if (characterFreq.ContainsKey(c))
+                {
+                    characterFreq[c] = characterFreq[c] + 1; //daca l-am gasit il cresc cu o uitate
+                }
+               else
+                {
+                    characterFreq.Add(c, 1);//daca nu l-am gasit, il adaug 
+                }
+            }
+            foreach(char key in characterFreq.Keys)
+            {
+                Console.WriteLine("{0}:{1}", key, characterFreq[key]);
+            }
+            foreach(KeyValuePair<char, int> kvp in characterFreq)
+            {
+                Console.WriteLine("{0}:{1}", kvp.Key, kvp.Value);
+            }
+            //SortedList<int, string> listSorted = new SortedList<int, string>();
+            var listSorted = new SortedList<int, string>();
+            listSorted.Add(6, "abc");
+            listSorted.Add(10, "abcd");
+            listSorted.Add(1, "xyz");
+
+            foreach(int key in listSorted.Keys)
+                //(KeyValuePair kvp in listSorted)
+            {
+                Console.WriteLine("{0}:{1}", key, listSorted[key]);
+            }
+
+            //HashSet<int> hs = new HashSet<int>(intArray);
+            var hs = new HashSet<int>(intArray);
+            hs.Add(1);
+            foreach(int i in hs)
+            {
+                Console.WriteLine(i);
+            }
+
+            var myQueue = new Queue<int>();
+            myQueue.Enqueue(2);
+            myQueue.Enqueue(3);
+            myQueue.Enqueue(100);
+            myQueue.Enqueue(1);
+            int value = myQueue.Dequeue(); //returns primul
+            Console.WriteLine("Queueelements: {0}", myQueue.Count);
+
+            var myStack = new Stack<int>();//returns ultimul
+            myStack.Push(2);
+            myStack.Push(3);
+            myStack.Push(100);
+            myStack.Push(1);
+            int stackVal = myStack.Pop();
+            Console.WriteLine();
+            Console.WriteLine(Browsers.Firefox);
 
         }
     }
