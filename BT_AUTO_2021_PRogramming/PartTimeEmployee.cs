@@ -4,11 +4,15 @@ using System.Text;
 
 namespace BT_AUTO_2021_PRogramming
 {
-    class PartTimeEmployee : Employee
+    public class PartTimeEmployee : Employee
 
     {
-        public PartTimeEmployee()
-        {
-        }
+      public PartTimeEmployee(string firstName, string lastName, string address, string city, string country, double salary) : base(firstName, lastName, address, city, country, salary * 0.75)
+      {
+
+      }
+
+
     }
 }
+

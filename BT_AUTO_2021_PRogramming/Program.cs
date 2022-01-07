@@ -790,7 +790,7 @@ namespace BT_AUTO_2021_PRogramming
         {
             Person p = new Person("Ionel", "Ionescu", "Strada Margelelor nr2", "Vartop", "RO");
             Employee e = new Employee("Madakuku", "Makao", "-", "Ananarivo", "Madagascar", 1500);
-            PartTimeEmployee pe = new PartTimeEmployee("Andrei", "Antonescu", "Str Unirii nr2","Iasi" "RO", 1000);
+            PartTimeEmployee pe = new PartTimeEmployee("Andrei", "Antonescu", "Str Unirii nr2","Iasi", "RO", 1000);
 
             Person.PrintPersonStatic(p);
             Employee.PrintPersonStatic(e);

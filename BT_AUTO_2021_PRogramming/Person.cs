@@ -16,6 +16,15 @@ namespace BT_AUTO_2021_PRogramming
         bool isHungry;
         DateTime dob;
 
+        public Person(string firstName, string lastName, string address, string city, string country)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.country = country;
+
+        }
         public Person(string firstName, string lastName, string address, string city, string country, char sex, string[] nationality, bool isHungry, DateTime dob)
         {
             this.firstName = firstName;
@@ -28,17 +37,9 @@ namespace BT_AUTO_2021_PRogramming
             this.isHungry = isHungry;
             this.dob = dob;
         }
-        public Person (string firstName, string lastName, string address, string city, string country, char sex)
-            {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.country = country;
+        
 
-        }
-
-        public Person(string name, char sex, string[] nationality, bool isHungry, DateTime dob)
+       public Person(string name, char sex, string[] nationality, bool isHungry, DateTime dob)
         {
             this.firstName = name;
             this.sex = sex;
@@ -51,8 +52,6 @@ namespace BT_AUTO_2021_PRogramming
 
         }
 
-
-
         public void Eat()
         {
             Console.WriteLine("The person is eating...");
@@ -63,9 +62,9 @@ namespace BT_AUTO_2021_PRogramming
             Console.WriteLine("The person is running for his health...");
             isHungry = true;
         }
-        public void SetName(string personName)
+        public void SetName(string name)
         {
-            firstName = personName;
+            this.firstName = name;
         }
 
         public void SetSex(char sex)
@@ -85,6 +84,10 @@ namespace BT_AUTO_2021_PRogramming
         public string GetCity()
         {
             return this.city;
+        }
+        public string GetCountry()
+        {
+            return this.country;
         }
 
         public void PrintPerson()
