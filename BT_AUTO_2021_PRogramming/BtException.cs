@@ -11,6 +11,11 @@ namespace BT_AUTO_2021_PRogramming
         {
             this.myCustomMessage = "BT EXCEPTION: " + message;
         }
+
+        public BtException() : base("BT EXCEPTION: ")
+        {
+
+        }
         public override string ToString()
         {
             return myCustomMessage + base.ToString();

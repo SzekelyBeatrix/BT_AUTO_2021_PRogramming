@@ -7,6 +7,7 @@ namespace BT_AUTO_2021_PRogramming
     sealed class Square : Rectangle
     {
         double side;
+        public double Side { get => side; set => side = value; }
 
         public Square(double side)
         {
@@ -36,7 +37,7 @@ namespace BT_AUTO_2021_PRogramming
         }
         public override void Draw()
         {
-            Console.WriteLine("Draqing a square!");
+            Console.WriteLine("Drawing a square!");
         }
     }
 }

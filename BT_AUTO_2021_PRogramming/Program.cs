@@ -894,20 +894,19 @@ namespace BT_AUTO_2021_PRogramming
             {
                 Console.WriteLine(args[1]);
                 int x = int.Parse(args[0]);
-                int y = 0;
-                int z = 7 / y;
+                int z = 7 / x;
             }
             catch (IndexOutOfRangeException ex)
             {
-                Console.WriteLine("Index out out bounds");
+                Console.WriteLine("Index out of bounds");
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("");
+                Console.WriteLine("Failed to convert to INT");
             }
             catch (DivideByZeroException ex)
             {
-                Console.WriteLine("Cannot divide bt 0");
+                Console.WriteLine("Cannot divide by 0");
             }
             catch (Exception ex)
             {
@@ -935,35 +934,11 @@ namespace BT_AUTO_2021_PRogramming
                 s2.Draw();
             }
 
-   
+
             //throw new NotImplementedException();
-            try
-            {
-                RecursiveMethod();
-            }
-            catch
-            {
+            throw new BtException("End of the call !!");
 
-            }
-            try
-            {
-                Console.WriteLine(args[1]);
-            }
-            catch
-            {
 
-            }
-           
-            try
-            {
-                int x = int.Parse(args[0]);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("The value cannotbe converted to int!");
-            }
-
-          
         }
     }
 }

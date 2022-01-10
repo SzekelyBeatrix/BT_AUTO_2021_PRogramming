@@ -7,7 +7,7 @@ namespace BT_AUTO_2021_PRogramming
      class Shape : AbstractShape , IDisposable
     {
         ConsoleColor color;
-
+        string test;
         protected void Test()
         {
 
@@ -39,7 +39,8 @@ namespace BT_AUTO_2021_PRogramming
         }
         public void Dispose()
         {
-            Console.WriteLine("Dispoing ");
+            Console.WriteLine("Dispoing object!");
+            test = "";
         }
         
     }
