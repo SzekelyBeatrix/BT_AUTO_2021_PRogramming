@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BT_AUTO_2021_PRogramming
 {
-     class Shape : AbstractShape
+     class Shape : AbstractShape , IDisposable
     {
         ConsoleColor color;
 
@@ -36,6 +36,10 @@ namespace BT_AUTO_2021_PRogramming
         public override void Color()
         {
             Console.WriteLine("Coloring a shape!");
+        }
+        public void Dispose()
+        {
+            Console.WriteLine("Dispoing ");
         }
         
     }

@@ -24,9 +24,16 @@ namespace BT_AUTO_2021_PRogramming
             //Library();
             //Homework03(args);
             //Course07();
-            Course08();
+            //Course08();
+            try
+            {
+                Course09(args);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
-        
 
 
         }
@@ -395,7 +402,7 @@ namespace BT_AUTO_2021_PRogramming
             GuessNumber(rnd.Next(1, 1000));
         }
 
-        static void Course05 ()
+        static void Course05()
         {
             DrawShapeOutline(5);
             DrawShapeOutline(10, 5);
@@ -425,7 +432,7 @@ namespace BT_AUTO_2021_PRogramming
 
 
         }
-        
+
         static bool IsOddNumber(int number)
         {
             if (number % 2 != 0)
@@ -525,9 +532,9 @@ namespace BT_AUTO_2021_PRogramming
             Person p2 = new Person("Beatrix", 'f', new String[] { "Romanian" }, false, new DateTime());
             p1.PrintPerson();
             p2.PrintPerson();
-        
-         
-        
+
+
+
 
             Rectangle r1 = new Rectangle(2, 7);
             r1.PrintRectangle();
@@ -623,7 +630,7 @@ namespace BT_AUTO_2021_PRogramming
                 Console.WriteLine();
             }
         }
-        public static void DrawShapeCorners (int l)
+        public static void DrawShapeCorners(int l)
         {
             DrawShapeCorners(l);
         }
@@ -664,11 +671,11 @@ namespace BT_AUTO_2021_PRogramming
         {
             Author a1 = new Author();
             a1.SetName("Dale Carnegie");
-            a1.SetEmail ("dalecarnegie@gmail.com");
+            a1.SetEmail("dalecarnegie@gmail.com");
             a1.PrintAuthor();
 
-           Book b1 = new Book("How to Win Friends and Influence People", 1936,a1, 45);
-           b1.PrintBook();
+            Book b1 = new Book("How to Win Friends and Influence People", 1936, a1, 45);
+            b1.PrintBook();
 
         }
         static void Homework03(string[] args)
@@ -697,7 +704,7 @@ namespace BT_AUTO_2021_PRogramming
             shapeList.Add(s2);
             shapeList.Add(r2);
             shapeList.Add(sh2);
-            shapeList.Add(s1); 
+            shapeList.Add(s1);
 
             s1.Draw();
             s2.Draw();
@@ -731,7 +738,7 @@ namespace BT_AUTO_2021_PRogramming
                     sh3.Draw();
                     sh3.Erase();
             }
-                    //without polymorphism - do not do this!
+            //without polymorphism - do not do this!
 
             Shape s3 = new Square();
             Shape r3 = new Rectangle();
@@ -754,7 +761,7 @@ namespace BT_AUTO_2021_PRogramming
                         sh4.Draw();
                         break;
                     }
-               switch (type)
+                    switch (type)
                     {
                         case "square":
                             {
@@ -772,7 +779,7 @@ namespace BT_AUTO_2021_PRogramming
                                 break;
                             }
 
-                      }
+                    }
                     IIntf ob1 = new MyParticularShape();
                     IClass ob2 = new MyParticularShape();
                     ob1.Print();
@@ -790,7 +797,7 @@ namespace BT_AUTO_2021_PRogramming
         {
             Person p = new Person("Ionel", "Ionescu", "Strada Margelelor nr2", "Vartop", "RO");
             Employee e = new Employee("Madakuku", "Makao", "-", "Ananarivo", "Madagascar", 1500);
-            PartTimeEmployee pe = new PartTimeEmployee("Andrei", "Antonescu", "Str Unirii nr2","Iasi", "RO", 1000);
+            PartTimeEmployee pe = new PartTimeEmployee("Andrei", "Antonescu", "Str Unirii nr2", "Iasi", "RO", 1000);
 
             Person.PrintPersonStatic(p);
             Employee.PrintPersonStatic(e);
@@ -805,7 +812,7 @@ namespace BT_AUTO_2021_PRogramming
             {
                 Console.WriteLine(x);
             }
-            for (int i = 0; i <intArray.Length; i ++)
+            for (int i = 0; i < intArray.Length; i++)
             {
                 Console.WriteLine(intArray[i]);
             }
@@ -819,22 +826,22 @@ namespace BT_AUTO_2021_PRogramming
 
             String stringDemo = "ana are mere"; //a:3, n:1, r:2,e:3, m:1
             Dictionary<char, int> characterFreq = new Dictionary<char, int>();
-            foreach(char c in stringDemo) // ia caracter cu caracter a, n, a, ,a,r,e, ,m,e,r,e
+            foreach (char c in stringDemo) // ia caracter cu caracter a, n, a, ,a,r,e, ,m,e,r,e
             {
-               if (characterFreq.ContainsKey(c))
+                if (characterFreq.ContainsKey(c))
                 {
                     characterFreq[c] = characterFreq[c] + 1; //daca l-am gasit il cresc cu o uitate
                 }
-               else
+                else
                 {
                     characterFreq.Add(c, 1);//daca nu l-am gasit, il adaug 
                 }
             }
-            foreach(char key in characterFreq.Keys)
+            foreach (char key in characterFreq.Keys)
             {
                 Console.WriteLine("{0}:{1}", key, characterFreq[key]);
             }
-            foreach(KeyValuePair<char, int> kvp in characterFreq)
+            foreach (KeyValuePair<char, int> kvp in characterFreq)
             {
                 Console.WriteLine("{0}:{1}", kvp.Key, kvp.Value);
             }
@@ -844,8 +851,8 @@ namespace BT_AUTO_2021_PRogramming
             listSorted.Add(10, "abcd");
             listSorted.Add(1, "xyz");
 
-            foreach(int key in listSorted.Keys)
-                //(KeyValuePair kvp in listSorted)
+            foreach (int key in listSorted.Keys)
+            //(KeyValuePair kvp in listSorted)
             {
                 Console.WriteLine("{0}:{1}", key, listSorted[key]);
             }
@@ -853,7 +860,7 @@ namespace BT_AUTO_2021_PRogramming
             //HashSet<int> hs = new HashSet<int>(intArray);
             var hs = new HashSet<int>(intArray);
             hs.Add(1);
-            foreach(int i in hs)
+            foreach (int i in hs)
             {
                 Console.WriteLine(i);
             }
@@ -875,6 +882,88 @@ namespace BT_AUTO_2021_PRogramming
             Console.WriteLine();
             Console.WriteLine(Browsers.Firefox);
 
+        }
+
+        private static void RecursiveMethod()
+        {
+            RecursiveMethod();
+        }
+        private static void Course09(string [] args)
+        {
+            try
+            {
+                Console.WriteLine(args[1]);
+                int x = int.Parse(args[0]);
+                int y = 0;
+                int z = 7 / y;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Index out out bounds");
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Cannot divide bt 0");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ooooops there is an exception!");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                Console.WriteLine("The finally block always executes!!");
+            }
+            Shape sh = new Shape();
+            try
+            {
+                sh.Draw();
+            }
+            finally
+            {
+                sh.Dispose();
+            }
+
+            //this is equivalent to try / finally from above
+            using(Shape s2 = new Shape())
+            {
+                s2.Draw();
+            }
+
+   
+            //throw new NotImplementedException();
+            try
+            {
+                RecursiveMethod();
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                Console.WriteLine(args[1]);
+            }
+            catch
+            {
+
+            }
+           
+            try
+            {
+                int x = int.Parse(args[0]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The value cannotbe converted to int!");
+            }
+
+          
         }
     }
 }
