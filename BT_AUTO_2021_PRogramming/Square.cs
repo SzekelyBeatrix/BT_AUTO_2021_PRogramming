@@ -38,6 +38,7 @@ namespace BT_AUTO_2021_PRogramming
         public override void Draw()
         {
             Console.WriteLine("Drawing a square!");
+
         }
     }
 }
