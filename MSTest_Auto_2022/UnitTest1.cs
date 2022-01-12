@@ -9,7 +9,7 @@ namespace MSTest_Auto_2022
         [TestInitialize]
         public void SetUp()
         {
-            Console.WriteLine("Before all test!");
+            Console.WriteLine("Before every test!");
         }
         [TestMethod]
         public void TestMethod1()
@@ -21,7 +21,7 @@ namespace MSTest_Auto_2022
         [TestCleanup]
         public void TearDown()
         {
-            Console.WriteLine("");
-         }
+            Console.WriteLine("After every test");
+        }
     }
 }

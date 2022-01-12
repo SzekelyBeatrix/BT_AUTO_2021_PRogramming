@@ -6,7 +6,7 @@ namespace NUnit_Auto_2022
 {
     interface ICalculator
     {
-        double Compute(double a, char op, double b);
+        double Compute(double a, double b, char op);
         
     }
 }

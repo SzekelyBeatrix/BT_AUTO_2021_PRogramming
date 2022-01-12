@@ -46,7 +46,7 @@ namespace NUnit_Auto_2022
             // Assert.AreEqual(-583, a + b + c + x + y, 0, "The test failed!!!");
             //Assert.That(a == b);
            // Assert.That(a, Is.AtLeast(100));
-            Assert.That(a, Is.InRange(100, 500)); //numarul este intre 100 si 500
+            //Assert.That(a, Is.InRange(100, 500)); //numarul este intre 100 si 500
         }
         [TearDown]
         public void CleanUp()

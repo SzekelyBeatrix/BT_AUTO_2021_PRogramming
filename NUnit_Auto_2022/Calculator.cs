@@ -9,7 +9,7 @@ namespace NUnit_Auto_2022
         double a, b;
         char op;
 
-        public Calculator(double a, char op, double b)
+        public Calculator(double a, double b, char op)
         {
             this.a = a;
             this.b = b;
@@ -17,9 +17,9 @@ namespace NUnit_Auto_2022
         }
         public double Compute()
         {
-            return Compute(a, op, b);
+            return Compute(a, b, op);
         }
-        public double Compute(double a, double op, double b)
+        public double Compute(double a, double b, char op)
         {
             switch (op)
             {
@@ -61,11 +61,6 @@ namespace NUnit_Auto_2022
                         throw new ArgumentException();
                     }
             }
-        }
-
-        public double Compute(double a, char op, double b)
-        {
-            throw new NotImplementedException();
         }
     }
 }

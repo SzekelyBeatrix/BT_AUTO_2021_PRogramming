@@ -6,7 +6,7 @@ using System.Text;
 namespace NUnit_Auto_2022
 {
 
-   public class CalculatorTest
+    class CalculatorTest
     {
         [SetUp]
 
@@ -14,6 +14,7 @@ namespace NUnit_Auto_2022
         {
 
         }
+
         [TestCase(1, '+', 1, 2)]
         [TestCase(-1, '+', -1, -2)]
         [TestCase(-1, '+', 0, -1)]
@@ -34,9 +35,9 @@ namespace NUnit_Auto_2022
         [TestCase(100, '/', 3, 33.3333)]
         [TestCase(100, '/', 0, 0)]
 
-        public void TestSum(double a, char op, double b, double result)
+        public void TestCompute(double a, double b, char op, double result)
         {
-            Calculator c = new Calculator(a,op, b);
+            Calculator c = new Calculator(a, b, op);
             Assert.AreEqual(result, c.Compute(),0.0001,"The sum of numbers are not as expected!");
         }
         [TearDown]
