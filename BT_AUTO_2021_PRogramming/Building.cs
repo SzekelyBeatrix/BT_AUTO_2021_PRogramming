@@ -6,8 +6,10 @@ namespace BT_AUTO_2021_PRogramming
 {
     class Building : AbstractBuilding , IBuilding
     {
-        
-       /* public virtual double ComputingArea()
+        Building b1 = new Building();
+        b1.SetFloor("The building has 5 floors!");
+
+        /*public virtual double ComputingArea()
         {
             return ComputingArea;
         }
