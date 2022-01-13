@@ -8,7 +8,9 @@ namespace BT_AUTO_2021_PRogramming
 
     //An interface named IBuilding that has a method for ComputingArea(), GetNumberOfFloors(), GetTotalNumberOfRooms() and TotalCapacity().
     {
-
-        
+        void Floor();
+        void Elevator();
+        void UndergroundParking();
+        void Building();
     }
 }
