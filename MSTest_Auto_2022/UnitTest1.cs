@@ -13,7 +13,11 @@ namespace MSTest_Auto_2022
             Console.WriteLine("Before every test!");
         }
         [TestMethod]
-        public void TestMethod1()
+        [DataRow(100, 200 , '+', 300)]
+        [DataRow(100, -200 , '+', -100)]
+        [DataRow(-100, -200 , '+', -300)]
+        [DataRow(100, 0 , '+', 100)]
+        public void TestMethod1(double a , double b, char op, double res)
         {
             Console.WriteLine("Testing..");
             Calculator c = new Calculator(100, 200, '+');
