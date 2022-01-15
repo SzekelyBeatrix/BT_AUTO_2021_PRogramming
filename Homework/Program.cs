@@ -18,7 +18,7 @@ namespace Homework
                 Console.WriteLine(building.GetNumberOfFloors());
 
                 var area = building.ComputingArea();
-                Console.WriteLine("The area of the building on the 5 floors is:"); /* (15,2 + 34 + 100 + 20)*5 = 846 */
+                Console.WriteLine("The area of the building is:"); /* (15,2 + 34 + 100 + 20)*5 = 846 */
                 Console.WriteLine(building.ComputingArea());
 
                 var noOfRooms = building.GetTotalNumberOfRooms();
