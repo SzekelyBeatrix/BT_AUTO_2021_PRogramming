@@ -8,15 +8,28 @@ namespace Homework
     class Program
     {
         private static readonly int MAX_CAPACITY = 300;
+
         static void Main(string[] args)
         {
             try
             {
                 var building = new Building { Floors = GetFloors() };
+                Console.WriteLine("The building has the following number of floors:");
                 Console.WriteLine(building.GetNumberOfFloors());
+
+                var area = building.ComputingArea();
+                Console.WriteLine("The area of the building on the 5 floors is:"); /* (15,2 + 34 + 100 + 20)*5 = 846 */
+                Console.WriteLine(building.ComputingArea());
+
+                var noOfRooms = building.GetTotalNumberOfRooms();
+                Console.WriteLine("The number of the rooms in the building is:");
+                Console.WriteLine(building.GetTotalNumberOfRooms());
+
                 var capacity = building.TotalCapacity();
+                Console.WriteLine("The capacity of the building is:");
+                Console.WriteLine(building.TotalCapacity());
                 if (capacity > MAX_CAPACITY)
-                    throw new Exception("Max capacity exeeded");
+                    throw new Exception("The Max capacity of the building is exeeded!!!");
             }
             catch(Exception ex)
             {
@@ -58,6 +71,8 @@ namespace Homework
             });
 
             return floors;
+
+
         }
         public static List<Room> GetRooms()
         {
@@ -68,12 +83,13 @@ namespace Homework
                 Accessories = new List<string> { "chairs", "wardrobe" },
                 Capacity = 10,
                 RoomArea = 15.2
+
             });
 
             rooms.Add(new Room
             {
                 RoomType = RoomType.Kitchen,
-                Accessories = new List<string> { "forks", "plates" },
+                Accessories = new List<string> { "forks", "plates","oven","sink", "refrigerator", "worktops","dishwasher" },
                 Capacity = 20,
                 RoomArea = 34
             });
@@ -81,7 +97,7 @@ namespace Homework
             rooms.Add(new Room
             {
                 RoomType = RoomType.WorkingSpace,
-                Accessories = new List<string> { "laptops", "desks" },
+                Accessories = new List<string> { "laptops", "desks", "chair"},
                 Capacity = 200,
                 RoomArea = 100
             });
@@ -95,6 +111,7 @@ namespace Homework
             });
 
             return rooms;
+
         }
     }
 }

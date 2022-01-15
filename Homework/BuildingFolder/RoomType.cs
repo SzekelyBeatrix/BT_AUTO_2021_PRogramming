@@ -7,8 +7,8 @@ namespace Homework.BuildingFolder
     public enum RoomType
     {
         MeetingRoom=1,
-        Kitchen,
-        WorkingSpace,
-        DepositSpace
+        Kitchen=2,
+        WorkingSpace=3,
+        DepositSpace=4
     }
 }
