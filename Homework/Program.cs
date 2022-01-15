@@ -14,20 +14,17 @@ namespace Homework
             try
             {
                 var building = new Building { Floors = GetFloors() };
-                Console.WriteLine("The building has the following number of floors:");
-                Console.WriteLine(building.GetNumberOfFloors());
+                Console.WriteLine("The building has the following number of floors:" + building.GetNumberOfFloors());
 
                 var area = building.ComputingArea();
-                Console.WriteLine("The area of the building is:"); /* (15,2 + 34 + 100 + 20)*5 = 846 */
-                Console.WriteLine(building.ComputingArea());
+                Console.WriteLine("The area of the building is:" + building.ComputingArea()); /* (15,2 + 34 + 100 + 20)*5 = 846 */
 
                 var noOfRooms = building.GetTotalNumberOfRooms();
-                Console.WriteLine("The number of the rooms in the building is:");
-                Console.WriteLine(building.GetTotalNumberOfRooms());
+                Console.WriteLine("The number of the rooms in the building is:" + building.GetTotalNumberOfRooms());
 
                 var capacity = building.TotalCapacity();
-                Console.WriteLine("The capacity of the building is:");
-                Console.WriteLine(building.TotalCapacity());
+                Console.WriteLine("The capacity of the building is:" + building.TotalCapacity());
+               
                 if (capacity > MAX_CAPACITY)
                     throw new Exception("The Max capacity of the building is exeeded!!!");
             }
