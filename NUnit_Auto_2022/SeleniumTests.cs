@@ -67,10 +67,10 @@ namespace NUnit_Auto_2022
             IWebElement cookieAccept2 = driver.FindElement(By.XPath(""));
             cookieAccept2.Click();*/
 
-            IWebElement eaglemoss = driver.FindElement(By.XPath("/html/body/div[3]/header/div[1]/ul/li/a/span"));
+            IWebElement eaglemoss = driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/div[2]/nav/div/ul/li[1]/a/span[2]"));
             eaglemoss.Click();
 
-            var addToCart = driver.FindElements(By.XPath(""));
+            var addToCart = driver.FindElements(By.XPath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li"));
             foreach(IWebElement el in addToCart)
             {
                 var text = el.FindElement(By.XPath("//span"));
@@ -80,7 +80,7 @@ namespace NUnit_Auto_2022
         [TearDown]
         public void Teardown()
         {
-            driver.Close();
+            driver.Quit();
         }
 
 

@@ -23,19 +23,25 @@ namespace NUnit_Auto_2022
         {
             driver = new ChromeDriver();
         }
-        [TestCase("dinosaur", "dinosaur")]
-
-        [Test]
-        public void Test01()
+        [TestCase("dinosaur", "dinosaurpassword")]
+        [TestCase("dinosaur", "")]
+        [TestCase("", "")]
+        [TestCase("", "dinopass")]
+        public void Test01(string user, string pass)
         {
+
+            Console.WriteLine(url);
             driver.Navigate().GoToUrl(url);
 
             var username = driver.FindElement(By.Id("input-login-username"));
             var password = driver.FindElement(By.Id("input-login-password"));
-            var submit = driver.FindElement(By.CssSelector("#login-form > div:nth-child(3) "));
+            var submit = driver.FindElement(By.CssSelector("#login-form > div:nth-child(3) > div.text-left.col-lg > button"));
 
-            username.SendKeys("beatrix");
-            password.SendKeys("1234QWER");
+            username.Clear();
+            username.SendKeys(user);
+
+            password.Clear();
+            password.SendKeys(pass);
 
             submit.Submit();
         }
@@ -43,7 +49,7 @@ namespace NUnit_Auto_2022
         [TearDown]
         public void TearDown()
         {
-
+            driver.Quit();
         }
     }
 }
