@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -24,7 +26,49 @@ namespace NUnit_Auto_2022
 
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            //Chrome options
+            var options = new ChromeOptions();
+            options.AddArgument("--start-maximized"); //- porneste direct maximized
+            //options.AddArgument("headless"); - nu vedem in Browser
+            options.AddArgument("ignore-certificate-errors");
+
+            var proxy = new Proxy();
+            proxy.HttpProxy = "127.0.0.1:8080";
+            proxy.IsAutoDetect = false;
+            //options.Proxy = proxy;
+            //options.AddExtension("C:\\Users\\DELL\\Downloads\\extension_4_42_0_0.crx");
+
+            driver = new ChromeDriver(options);
+            driver.Manage().Window.Maximize(); //- porneste mic si apoi apasa butonul de maximised - mai ok de folosit
+
+            //Firefox Options
+            var firefoxOptions = new FirefoxOptions();
+            string[] optionList =
+                {
+                //"--headless",
+                "--ignore-certificate-errors",
+                "--no-sandbox", 
+                "--disable-gpu"
+            };
+            firefoxOptions.AddArguments(optionList);
+            FirefoxProfile fProfile = new FirefoxProfile();
+            fProfile.AddExtension("C:\\Users\\DELL\\Downloads\\metamask-10.8.1-an+fx.xpi");
+            firefoxOptions.Profile = fProfile;
+
+            // este ca si la Chrome, doar ca acuma e Firefox
+            driver = new FirefoxDriver(firefoxOptions);
+            driver.Manage().Window.Maximize();
+
+            //Edge options
+
+            var edgeOptions = new EdgeOptions();
+            //edgeOptions.AddExtension("C:\\Users\\DELL\\Downloads\\extension_4_42_0_0.crx");
+            edgeOptions.AddArguments("args", "['--start-maximized','--headless']");
+            //edgeOptions.AddArguments("headless");
+
+            driver = new EdgeDriver(edgeOptions);
+            driver.Manage().Window.Maximize();
+
         }
         [TestCase("dinosaur", "dinosaurpassword","","")]
         [TestCase("dinosaur","", "","Password is requierd!")]
@@ -109,7 +153,7 @@ namespace NUnit_Auto_2022
 
         }
         [Test]
-        public void Test05()
+       public void Test05()
         {
             string url = protocol + "://" + hostname + ":8081/lazy.html";
             driver.Navigate().GoToUrl(url);
@@ -126,6 +170,58 @@ namespace NUnit_Auto_2022
 
         }
 
+        [Test]
+        public void Test06()
+        {
+            driver.Navigate().GoToUrl("https://magazinulcolectionarului.ro/");
+
+            var cookies = driver.Manage().Cookies;
+            Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
+            Utils.PrintCookies(cookies);
+
+            Cookie myCookie = new Cookie("myCookie", "vineoaiapapalupu");
+            cookies.AddCookie(myCookie);
+            Utils.PrintCookies(cookies);
+
+            var ck = cookies.GetCookieNamed("PHPSESSID");
+            Console.WriteLine("Cookie name {0} and value {1}", ck.Name, ck.Value);
+
+            cookies.DeleteAllCookies();
+            Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
+
+
+
+            var ss = ((ITakesScreenshot)driver).GetScreenshot();
+            ss.SaveAsFile("D:\\Bea\\Btransformers\\ScreenshotHM.png", ScreenshotImageFormat.Png);
+
+            Utils.TakeScreenshotWithDate(driver, "D:\\Bea\\Btransformers\\ScreenshotHM.png", "screenshot1.png", ScreenshotImageFormat.Png);
+        }
+
+        [Test]
+        public void Test07()
+        {
+            driver.Navigate().GoToUrl("http://86.121.249.150:4999/#/alert");
+            var alertButton = driver.FindElement(By.Id("alert-trigger"));
+            var confirmButton = driver.FindElement(By.Id("confirm-trigger"));
+            var promptButton = driver.FindElement(By.Id("prompt-trigger"));
+
+            alertButton.Click();
+            IAlert alert = driver.SwitchTo().Alert();
+            Console.WriteLine(alert.Text);
+            alert.Accept();
+
+            confirmButton.Click();
+            alert = driver.SwitchTo().Alert();
+            Console.WriteLine(alert.Text);
+            alert.Dismiss();
+
+            promptButton.Click();
+            alert = driver.SwitchTo().Alert();
+            Console.WriteLine(alert.Text);
+            alert.SendKeys("Beatrix");
+            alert.Accept();
+
+        }
         [TearDown]
         public void TearDown()
         {
