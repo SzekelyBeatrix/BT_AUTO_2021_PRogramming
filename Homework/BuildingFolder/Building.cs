@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Homework.BuildingFolder
 {
-    public class Building:AbstractBuilding
+    public class Building : AbstractBuilding
     {
+
+
         public List<Floor> Floors { get; set; }
         public override double ComputingArea()
         {
@@ -29,7 +31,7 @@ namespace Homework.BuildingFolder
 
         public override int GetTotalNumberOfRooms()
         {
-            int noOfRooms=0;
+            int noOfRooms = 0;
             foreach (var floor in Floors)
                 noOfRooms += floor.Rooms.Count();
 
@@ -49,5 +51,12 @@ namespace Homework.BuildingFolder
 
             return totalCapacity;
         }
+        public void PrintBuilding()
+        {
+            
+            Console.WriteLine("Now print all 5 floors: {0}", ComputingArea());
+          
+        }
+
     }
 }

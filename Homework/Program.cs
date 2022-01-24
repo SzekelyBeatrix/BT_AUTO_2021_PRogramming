@@ -14,7 +14,7 @@ namespace Homework
             try
             {
                 var building = new Building { Floors = GetFloors() };
-                Console.WriteLine("The building has the following number of floors:" + building.GetNumberOfFloors());
+                Console.WriteLine("The building has the following number of floors!" + building.GetNumberOfFloors());
 
                 var area = building.ComputingArea();
                 Console.WriteLine("The area of the building is:" + building.ComputingArea()); /* (15,2 + 34 + 100 + 20)*5 = 846 */
@@ -24,7 +24,9 @@ namespace Homework
 
                 var capacity = building.TotalCapacity();
                 Console.WriteLine("The capacity of the building is:" + building.TotalCapacity());
-               
+
+                Console.WriteLine("Now print all 5 floors:", area, noOfRooms, capacity);
+
                 if (capacity > MAX_CAPACITY)
                     throw new Exception("The Max capacity of the building is exeeded!!!");
             }
@@ -37,6 +39,7 @@ namespace Homework
         public static List<Floor> GetFloors()
         {
             var floors = new List<Floor>();
+            
             floors.Add(new Floor
             {
                 FloorNumber = 0,
@@ -66,9 +69,11 @@ namespace Homework
                 FloorNumber = 4,
                 Rooms = GetRooms()
             });
-
+            foreach(var Floor in floors)
+            {
+                Console.WriteLine("---FLOOR {0}---",Floor.FloorNumber);
+            }
             return floors;
-
 
         }
         public static List<Room> GetRooms()
@@ -107,8 +112,16 @@ namespace Homework
                 RoomArea = 20
             });
 
+            foreach(var Room in rooms)
+            {
+                Console.WriteLine("--RoomType--",Room.RoomType);
+                Console.WriteLine("--RoomType--",Room.Accessories);
+                Console.WriteLine("--RoomType--",Room.Capacity);
+                Console.WriteLine("--RoomType--",Room.RoomArea);
+            }
             return rooms;
 
         }
+
     }
 }

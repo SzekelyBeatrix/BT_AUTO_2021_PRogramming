@@ -74,6 +74,8 @@ namespace NUnit_Auto_2022
         [TestCase("dinosaur","", "","Password is requierd!")]
         [TestCase("", "", "Username is requierd", "Password is requierd!")]
         [TestCase("", "dinopass", "Username is requierd!", "")]
+
+        [Test]
         public void Test01(string user, string pass, string userErr, string passErr)
         {
 
