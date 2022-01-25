@@ -1,7 +1,6 @@
 ﻿using NuGet.Frameworks;
 using NUnit_Auto_2022.PageModels.POM;
 using NUnit.Framework;
-using NUnit_Auto_2022.PageModels;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
