@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -224,6 +225,81 @@ namespace NUnit_Auto_2022
             alert.Accept();
 
         }
+
+        [Test]
+        public void Test08()
+        {
+            driver.Navigate().GoToUrl(url + "hover");
+            
+            var hoverButton = driver.FindElement(By.CssSelector("#root > div > div.content > div > div.container-table.text-center.container > div > button"));
+            //var hoverButton = driver.FindElement(By.ClassName("btn btn-outline-info"));
+
+
+            Actions actions = new Actions(driver);
+            actions.MoveToElement(hoverButton).Build().Perform();
+            //actions.MoveToElement(hoverButton).Click().Release();
+            //IAction action = actions.Build();
+            //action.Perform();
+
+            var catSelect = driver.FindElement(By.Id("Cat"));
+            catSelect.Click();
+
+            var resultText = driver.FindElement(By.Id("result"));
+            Assert.AreEqual("You last clicked the Cat", resultText);
+
+            var allItems = driver.FindElement(By.ClassName("clickable"));
+            /*foreach (var item in allItems)
+            {
+                var text = item.Text;
+                var resultTxt = driver.FindElement(By.Id("result"));
+                Assert.AreEqual(String.Format("You last clicked me!", text), resultTxt);
+            }*/
+
+
+        }
+
+        [Test]
+        public void Test09()
+        {
+            driver.Navigate().GoToUrl(url + "stale");
+
+            for (int i = 0; i <100; i++)
+            {
+                var button = driver.FindElement(By.Id("stale-button"));
+                button.Click();
+            }
+
+            Utils.ExecuteJsScript(driver, "return document.title");
+            Utils.ExecuteJsScript(driver, "alertreturn document.title");
+
+        }
+
+        [Test]
+
+        public void Test10()
+        {
+            driver.Navigate().GoToUrl(url);
+            var body = driver.FindElement(By.TagName("body"));
+            body.SendKeys(Keys.Control);
+            body.SendKeys("t");
+
+            foreach(var handle in driver.WindowHandles)
+            {
+                driver.SwitchTo().Window(handle);
+                Console.WriteLine(handle);
+            }
+        }
+
+        [Test]
+        public void Test11()
+        {
+            driver.Navigate().GoToUrl("https://www.vexio.ro/account/login/#login");
+
+            var iframe = driver.FindElement(By.TagName("iframe"));
+
+            driver.SwitchTo().Frame(iframe);
+        }
+
         [TearDown]
         public void TearDown()
         {
