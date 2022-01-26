@@ -41,12 +41,11 @@ namespace HomeworkTest
             var cookieValue = driver.FindElement(By.Id("cookie-value"));
 
             setCookie.Click();
+            var ck = cookies.GetCookieNamed("gibberish");
+            Assert.AreEqual(ck, cookieValue.Text);
+            Console.WriteLine("Cookie value {1}");
+
             removeCookie.Click();
-
-           
-
-            var ck = cookies.GetCookieNamed("PHPSESSID");
-            Console.WriteLine("Cookie name {0} and value {1}", cookies.AllCookies.Count);
 
             cookies.DeleteAllCookies();
             Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);

@@ -47,8 +47,8 @@ namespace RegistrationTest
 
             driver.Navigate().GoToUrl(url);
 
-            var pageReg = driver.FindElement(By.CssSelector("#root > div > div.content > div > div:nth-child(1) > div > div > h1 > small"));
-            Assert.AreEqual("Registration", pageReg.Text);
+            var pageAutentificare = driver.FindElement(By.CssSelector("#root > div > div.content > div > div:nth-child(1) > div > div > h1 > small"));
+            Assert.AreEqual("Autentificare", pageAutentificare.Text);
 
             var username = driver.FindElement(By.Id("input-username"));
             var password = driver.FindElement(By.Id("input-password"));
