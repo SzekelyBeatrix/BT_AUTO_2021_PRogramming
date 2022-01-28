@@ -39,16 +39,28 @@ namespace HomeworkTest
             var setCookie = driver.FindElement(By.Id("set-cookie"));
             var removeCookie = driver.FindElement(By.Id("delete-cookie"));
             var cookieValue = driver.FindElement(By.Id("cookie-value"));
-
+            var cookieAfisat = driver.FindElement(By.CssSelector("#cookie-value"));
             setCookie.Click();
+
+            static void PrintCookies(ICookieJar cookies)
+            {
+
+                foreach (Cookie c in cookies.AllCookies)
+                {
+                    Console.WriteLine("Cookie name{0} = cookie value{1}", c.Name, c.Value);
+                }
+            }
+            PrintCookies(cookies);
+
+          
             var ck = cookies.GetCookieNamed("gibberish");
-            Assert.AreEqual(cookieValue, cookieValue.Text);
+            Assert.AreEqual(ck, cookieValue.Text);
             Console.WriteLine("Cookie value {1}");
 
-            removeCookie.Click();
+           removeCookie.Click();
 
-            cookies.DeleteAllCookies();
-            Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
+           cookies.DeleteAllCookies();
+           Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
         }
 
         [TearDown]

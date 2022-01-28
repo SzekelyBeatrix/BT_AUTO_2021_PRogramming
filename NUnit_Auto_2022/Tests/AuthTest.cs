@@ -1,5 +1,7 @@
-﻿using NuGet.Frameworks;
+﻿
 using NUnit_Auto_2022.PageModels.POM;
+using NUnit_Auto_2022.PageModels.PageFactory;
+using NUnit_Auto_2022.PageModels.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -9,7 +11,7 @@ using System.Text;
 
 namespace NUnit_Auto_2022.Tests
 {
-    class AuthTest
+   public class AuthTest
     {
         IWebDriver driver;
 
