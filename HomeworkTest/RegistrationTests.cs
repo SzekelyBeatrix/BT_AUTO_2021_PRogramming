@@ -73,6 +73,7 @@ namespace RegistrationTest
             //var termscheckError = driver.FindElement(By.CssSelector("#registration-form > div:nth-child(12) > div.text-left.col-lg > div > div"));
             //Assert.AreEqual("You need to accept our T&C!", termscheckError.Text);
 
+            //Assert pe MR, MS
 
             username.Clear();
             username.SendKeys(user);

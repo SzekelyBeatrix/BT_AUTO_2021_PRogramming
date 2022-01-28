@@ -42,7 +42,7 @@ namespace HomeworkTest
 
             setCookie.Click();
             var ck = cookies.GetCookieNamed("gibberish");
-            Assert.AreEqual(ck, cookieValue.Text);
+            Assert.AreEqual(cookieValue, cookieValue.Text);
             Console.WriteLine("Cookie value {1}");
 
             removeCookie.Click();

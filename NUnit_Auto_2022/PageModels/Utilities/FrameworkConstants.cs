@@ -6,10 +6,10 @@ namespace NUnit_Auto_2022.PageModels.Utilities
 {
    public class FrameworkConstants
     {
-       const string protocol = "http";
-       const string hostname = "86.121.249.150";
-       const string port = "4999";
-       const string path = "/#/";
+        const string protocol = "http";
+        const string hostname = "86.121.249.150";
+        const string port = "4999";
+        const string path = "/#/";
 
         public static string GetUrl()
         {
@@ -17,4 +17,3 @@ namespace NUnit_Auto_2022.PageModels.Utilities
         }
     }
 }
-s

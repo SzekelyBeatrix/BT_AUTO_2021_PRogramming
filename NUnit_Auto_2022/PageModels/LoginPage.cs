@@ -6,5 +6,6 @@ namespace NUnit_Auto_2022.PageModels
 {
     class LoginPage
     {
+
     }
 }
