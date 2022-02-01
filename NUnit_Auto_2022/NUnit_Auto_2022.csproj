@@ -17,4 +17,9 @@
     <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="97.0.1072.55" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Others\" />
+    <Folder Include="TestData\" />
+  </ItemGroup>
+
 </Project>

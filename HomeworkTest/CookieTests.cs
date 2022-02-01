@@ -25,43 +25,43 @@ namespace HomeworkTest
         }
 
         [Test]
-        public void TestCookie()
+        public void TestCookie(string cookiev)
         {
             driver.Navigate().GoToUrl(url);
 
             var cookies = driver.Manage().Cookies;
+             Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
+             foreach (Cookie c in cookies.AllCookies)
+             {
+                 Console.WriteLine("I am getting the cookies from the browser:", c.Name, c.Value);
+             }
+
+             var setCookie = driver.FindElement(By.Id("set-cookie"));
+             var removeCookie = driver.FindElement(By.Id("delete-cookie"));
+             var cookieValue = driver.FindElement(By.Id("cookie-value"));
+             var cookieAfisat = driver.FindElement(By.CssSelector("#cookie-value"));
+             setCookie.Click();
+
+             static void PrintCookies(ICookieJar cookies)
+             {
+
+                 foreach (Cookie c in cookies.AllCookies)
+                 {
+                     Console.WriteLine("Cookie name{0} = cookie value{1}", c.Name, c.Value);
+                 }
+             }
+             PrintCookies(cookies);
+
+
+             var myCookie = driver.Manage().Cookies.GetCookieNamed("gibberish");
+             Assert.AreEqual(myCookie, cookieValue.Text);
+             Console.WriteLine("Cookie value {1}");
+
+            removeCookie.Click();
+
+            cookies.DeleteAllCookies();
             Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
-            foreach (Cookie c in cookies.AllCookies)
-            {
-                Console.WriteLine("I am getting the cookies from the browser:", c.Name, c.Value);
-            }
-
-            var setCookie = driver.FindElement(By.Id("set-cookie"));
-            var removeCookie = driver.FindElement(By.Id("delete-cookie"));
-            var cookieValue = driver.FindElement(By.Id("cookie-value"));
-            var cookieAfisat = driver.FindElement(By.CssSelector("#cookie-value"));
-            setCookie.Click();
-
-            static void PrintCookies(ICookieJar cookies)
-            {
-
-                foreach (Cookie c in cookies.AllCookies)
-                {
-                    Console.WriteLine("Cookie name{0} = cookie value{1}", c.Name, c.Value);
-                }
-            }
-            PrintCookies(cookies);
-
-          
-            var ck = cookies.GetCookieNamed("gibberish");
-            Assert.AreEqual(ck, cookieValue.Text);
-            Console.WriteLine("Cookie value {1}");
-
-           removeCookie.Click();
-
-           cookies.DeleteAllCookies();
-           Console.WriteLine("The site contains {0} cookies", cookies.AllCookies.Count);
-        }
+         }
 
         [TearDown]
         public void Teardown()
