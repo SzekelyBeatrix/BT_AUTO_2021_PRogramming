@@ -17,6 +17,7 @@ namespace NUnit_Auto_2022.Framework_Architecture.PageModels
         private IWebElement passwordErrElem => driver.FindElement(By.CssSelector("#registration-form > div:nth-child(3) > div > div > div.text-left.invalid-feedback"));
         private IWebElement confPasswordLabelElem => driver.FindElement(By.CssSelector("#registration-form > div:nth-child(4) > label"));
         private IWebElement confPasswordInputElem => driver.FindElement(By.Id("input-password-confirm"));
+        private IWebElement confPasswordErrElem => driver.FindElement(By.CssSelector("#registration-form > div:nth-child(4) > div > div > div.text-left.invalid-feedback"));
         private IWebElement titleLabelElem => driver.FindElement(By.CssSelector("#registration-form > div:nth-child(6) > label"));
         private IWebElement MsLabelElem => driver.FindElement(By.CssSelector("#registration-form > div:nth-child(6) > div > div:nth-child(2) > label"));
         private IWebElement MsInputElem => driver.FindElement(By.CssSelector("#registration-form > div:nth-child(6) > div > div:nth-child(2) > input"));
@@ -49,13 +50,27 @@ namespace NUnit_Auto_2022.Framework_Architecture.PageModels
             return regPageTextElem.Text;
         }
 
-        public void Registration(string user, string pass)
+        public void Registration(string user, string pass, string confpass, string firstName, string lastName, string email, string dob, string nationality)
         {
             usernameInputElem.Clear();
             usernameInputElem.SendKeys(user);
             passwordInputElem.Clear();
             passwordInputElem.SendKeys(pass);
-
+            confPasswordInputElem.Clear();
+            confPasswordInputElem.SendKeys(confpass);
+            MsInputElem.Click();
+            MrInputElem.Click();
+            firstNameInputElem.Clear();
+            firstNameInputElem.SendKeys(firstName);
+            lastNameInputElem.Clear();
+            lastNameInputElem.SendKeys(lastName);
+            emailInputElem.Clear();
+            emailInputElem.SendKeys(email);
+            dateOfBirthInputElem.Clear();
+            dateOfBirthInputElem.SendKeys(dob);
+            nationalityInputElem.Clear();
+            nationalityInputElem.SendKeys(nationality);
+            termsInputElem.Click();
             submitButtonElem.Submit();
         }
     }
