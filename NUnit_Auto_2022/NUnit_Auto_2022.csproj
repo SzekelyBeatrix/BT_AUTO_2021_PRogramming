@@ -18,17 +18,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Framework Architecture\Tests\" />
     <Folder Include="Others\" />
-    <Folder Include="TestData\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HomeworkTest\HomeworkTest.csproj" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y /f $(ProjectDir)config.properties $(ProjectDir)$(OutDir)config.properties&#xD;&#xA;" />
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="xcopy /y $(ProjectDir)\*.properties $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestData\*.*&#xD;&#xA;&#xD;&#xA;" />
   </Target>
+
+ 
 
 </Project>

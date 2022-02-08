@@ -8,7 +8,7 @@ namespace NUnit_Auto_2022.Utilities
     {
         const string extensionPath = "Other\\ExtensionFile";
 
-       static Dictionary<string, string> configData = Utils.ReadConfig("config.propreties");
+       static Dictionary<string, string> configData = Utils.ReadConfig("config.properties");
         static string protocol = configData["protocol"];
         static string hostname = configData["hostname"];
         static string port = configData["port"];
