@@ -4,12 +4,13 @@ using System.Text;
 
 namespace NUnit_Auto_2022.Framework_Architecture.Utilities
 {
-    class FrameworkConstants
+    public class FrameworkConstants
     {
-        const string protocol = "http";
-        const string hostname = "86.121.249.150";
-        const string port = "4999";
-        const string path = "/#/";
+
+        public const string protocol = "http";
+        public const string hostname = "86.121.249.150";
+        public const string port = "4999";
+        public const string path = "/#/";
 
         public static string GetUrl()
         {
