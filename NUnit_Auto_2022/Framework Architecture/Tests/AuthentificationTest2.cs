@@ -44,18 +44,18 @@ namespace NUnit_Auto_2022.Framework_Architecture.Tests
              }
          }*/
 
-        [Test, TestCaseSource("GetCredentialsDataCsv3")]
+        [Test, TestCaseSource("GetDataCsv")]
         public static IEnumerable<TestCaseData> GetCredentialsDataCsv3()
         {
-            var csvData = Utils.GetDataTableFromCsv("Framework_Architecture.TestData2\\Credentials.csv");
+            var csvData = Utils.GetDataTableFromCsv("TestData2\\Credentials.csv");
             for (int i = 0; i < csvData.Rows.Count; i++)
             {
                 yield return new TestCaseData(csvData.Rows[i].ItemArray);
             }
         }
 
-        [Test, TestCaseSource("GetCredentialsDataExcel")]
-        public static IEnumerable<TestCaseData> GetCredentialsDataExcel()
+        [Test, TestCaseSource("GetDataExcel")]
+        public static IEnumerable<TestCaseData> GetDataExcel()
         {
             var excelData = Utils.GetDataTableFromExcel("TestData2\\Credentials.xlsx");
             for (int i = 1; i < excelData.Rows.Count; i++)
@@ -64,23 +64,23 @@ namespace NUnit_Auto_2022.Framework_Architecture.Tests
             }
         }
 
-        [Test, TestCaseSource("GetCredentialsDataJson")]
-        public static IEnumerable<TestCaseData> GetCredentialsDataJson()
+        [Test, TestCaseSource("GetDataJson")]
+        public static IEnumerable<TestCaseData> GetDataJson()
         {
-            var credentials = Utils.JsonRead<DataModels.Credentials>("TestData2\\Credentials.json");
-            yield return new TestCaseData(credentials.Username, credentials.Password);
+            var Credentials = Utils.JsonRead<DataModels.Credentials2>("TestData2\\Credentials.json");
+            yield return new TestCaseData(Credentials.Username, Credentials.Password, Credentials.ConfirmPassword, Credentials.FirstName, Credentials.LastName, Credentials.Email, Credentials.Dob, Credentials.Nationality);
         }
 
-        [Test, TestCaseSource("GetCredentialsDataXml")]
-        public static IEnumerable<TestCaseData> GetCredentialsDataXml()
+        [Test, TestCaseSource("GetDataXml")]
+        public static IEnumerable<TestCaseData> GetDataXml()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(DataModels.Credentials));
+            XmlSerializer serializer = new XmlSerializer(typeof(DataModels.Credentials2));
             foreach (var file in Utils.GetAllFilesInFolderExt("TestData2\\", "*.xml"))
             {
                 Console.WriteLine("Testing with file: " + file);
                 using (Stream reader = new FileStream(file, FileMode.Open))
                 {
-                    var credentials = (DataModels.Credentials)serializer.Deserialize(reader);
+                    var credentials = (DataModels.Credentials2)serializer.Deserialize(reader);
                     yield return new TestCaseData(credentials.Username, credentials.Password);
                 }
             }
