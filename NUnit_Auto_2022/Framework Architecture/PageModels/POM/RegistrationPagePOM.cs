@@ -50,7 +50,7 @@ namespace NUnit_Auto_2022.Framework_Architecture.PageModels.POM
             return regPageElem.Text;
         }
 
-        public void Login(string user, string passw, string confPass, string fName, string lName, string mail, string dateOfb, string nation)
+        public void Registration(string user, string passw, string confPass, string fName, string lName, string mail, string dateOfb, string nation)
         {
             var usernameInput = driver.FindElement(By.Id(usernameInputElem));
             usernameInput.Clear();

@@ -11,11 +11,10 @@ namespace NUnit_Auto_2022.Framework_Architecture.Tests
     {
         public IWebDriver driver;
 
-
         [SetUp]
         public void Setup()
         {
-            driver = Browser.GetDriver();
+            driver = Browser.GetDriver(WebBrowsers.Chrome);
         }
 
         [TearDown]

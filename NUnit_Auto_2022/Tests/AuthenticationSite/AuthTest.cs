@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace NUnit_Auto_2022.Tests
 {
@@ -71,6 +72,53 @@ namespace NUnit_Auto_2022.Tests
         //[TestCase("user2","pass2")]
         //[TestCase("user3","pass3")]
         //[TestCase("user44","pass4")]
+
+
+        //poate fi folosit oriunde
+        private static IEnumerable<TestCaseData> GetCredentialsDataCsv3()
+        {
+            var csvData = Utils.GetDataTableFromCsv("TestData\\credentials.csv");
+            for (int i = 0; i < csvData.Rows.Count; i++)
+            {
+                yield return new TestCaseData(csvData.Rows[i].ItemArray);
+            }
+        }
+
+        private static IEnumerable<TestCaseData> GetCredentialsDataExcel()
+        {
+            var excelData = Utils.GetDataTableFromExcel("TestData\\credentials.xlsx");
+            for(int i = 0; i < excelData.Rows.Count; i++)
+            {
+                yield return new TestCaseData(excelData.Rows[i].ItemArray);
+            }
+        }
+
+        private static IEnumerable<TestCaseData> GetCredentialsDataJson()
+        {
+            var credentials = Utils.JsonRead<DataModels.Credentials>("TestData\\credentials.json");
+            yield return new TestCaseData(credentials.Username, credentials.Password);
+
+           
+        }
+
+        private static IEnumerable<TestCaseData> GetCredentialsDataXml()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(DataModels.Credentials));
+            foreach (var file in Utils.GetAllFilesInFolderExt("TestData\\", "*.xml"))
+            {
+                Console.WriteLine("Testing with file: " + file);
+                using (Stream reader = new FileStream(file, FileMode.Open))
+                {
+                    var credentials = (DataModels.Credentials)serializer.Deserialize(reader);
+                    yield return new TestCaseData(credentials.Username, credentials.Password);
+                }
+            }
+
+       
+
+    }
+
+    [Test, TestCaseSource("GetCredentialsDataXml")]
         public void BasicAuth(string username, string password)
         {
             driver.Navigate().GoToUrl(url + "login");
@@ -100,5 +148,6 @@ namespace NUnit_Auto_2022.Tests
            lp.Login(username, password);
         }
       
+
     }
 }
