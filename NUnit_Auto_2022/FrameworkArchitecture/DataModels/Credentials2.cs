@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace NUnit_Auto_2022.Framework_Architecture.DataModels
+namespace NUnit_Auto_2022.FrameworkArchitecture.DataModels
 {
     [XmlRoot(ElementName = "Credentials")]
     public class Credentials2

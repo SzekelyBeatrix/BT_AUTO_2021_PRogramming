@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NUnit_Auto_2022.Framework_Architecture.Tests
+namespace NUnit_Auto_2022.FrameworkArchitecture.Tests
 {
     class BaseTest
     {

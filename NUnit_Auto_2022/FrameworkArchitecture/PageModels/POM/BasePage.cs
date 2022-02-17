@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NUnit_Auto_2022.Framework_Architecture.PageModels.POM
+namespace NUnit_Auto_2022.FrameworkArchitecture.PageModels.POM
 {
     class BasePage
     {

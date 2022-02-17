@@ -1,7 +1,7 @@
 ﻿using NuGet.Frameworks;
 using NUnit.Framework;
-using NUnit_Auto_2022.Framework_Architecture.PageModels.POM;
-using NUnit_Auto_2022.Framework_Architecture.Utilities;
+using NUnit_Auto_2022.FrameworkArchitecture.PageModels.POM;
+using NUnit_Auto_2022.FrameworkArchitecture.Utilities;
 using NUnit_Auto_2022.PageModels.POM;
 using OpenQA.Selenium;
 using System;
@@ -10,51 +10,23 @@ using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace NUnit_Auto_2022.Framework_Architecture.Tests
+namespace NUnit_Auto_2022.FrameworkArchitecture.Tests
 {
     class AuthentificationTest2 : BaseTest
     {
         string url = FrameworkConstants2.GetUrl();
 
-        /* [Test, TestCaseSource("GetCredentialsCsv")]
-        public static IEnumerable<TestCaseData> GetCredentialsCsv()
-         {
-             string path = "Framework_Architecture2.TestData\\Credentials.csv";
-             using (var reader = new StreamReader(path))
-             {
-                 var index = 0;
-                 while (!reader.EndOfStream)
-                 {
-                     var line = reader.ReadLine();
-                     var values = line.Split(',');
-                     if (index > 0)
-                     {
-                         yield return new TestCaseData(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]);
-                     }
-                     index++;
-                 }
-             }
-         }
-         [Test, TestCaseSource("GetCredentialsDataCsHM")] */
-        /* public static IEnumerable<TestCaseData> GetCredentialsDataCsHM()
-         {
-             foreach (var values in Utils.GetGenericData("Framework_Architecture2.TestData\\Credentials.csv"))
-             {
-                 yield return new TestCaseData(values);
-             }
-         }*/
-
-        [Test, TestCaseSource("GetDataCsv")]
-        public static IEnumerable<TestCaseData> GetCredentialsDataCsv3()
+        [Test, TestCaseSource("GetCredentialsDataCsv")]
+        public static IEnumerable<TestCaseData> GetCredentialsDataCsv()
         {
-            var csvData = Utils.GetDataTableFromCsv("TestData2\\Credentials.csv");
+            var csvData = Utils.GetDataTableFromCsv("FrameworkArchitecture\\TestData2\\Credentials2.csv");
             for (int i = 0; i < csvData.Rows.Count; i++)
             {
                 yield return new TestCaseData(csvData.Rows[i].ItemArray);
             }
         }
-
-        [Test, TestCaseSource("GetDataExcel")]
+        
+       [Test, TestCaseSource("GetDataExcel")]
         public static IEnumerable<TestCaseData> GetDataExcel()
         {
             var excelData = Utils.GetDataTableFromExcel("TestData2\\Credentials.xlsx");

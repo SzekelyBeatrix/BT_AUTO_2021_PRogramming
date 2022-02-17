@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace NUnit_Auto_2022.Framework_Architecture.Utilities
+namespace NUnit_Auto_2022.FrameworkArchitecture.Utilities
 {
     class Utils
     {
@@ -69,7 +69,6 @@ namespace NUnit_Auto_2022.Framework_Architecture.Utilities
                     {
                         string[] rowValues = csvReader.ReadFields();
 
-                        // this for loop can be skipped, it is used for sanitisation purposes
                         for (int i = 0; i < rowValues.Length; i++)
                         {
                             if (rowValues[i] == "")
