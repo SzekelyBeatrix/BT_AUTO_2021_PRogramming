@@ -11,6 +11,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using MySql.Data.MySqlClient;
 
 namespace NUnit_Auto_2022.Tests
 {
@@ -118,7 +119,7 @@ namespace NUnit_Auto_2022.Tests
 
     }
 
-    [Test, TestCaseSource("GetCredentialsDataXml")]
+    [Test, TestCaseSource("GetCredentialsDb")]
         public void BasicAuth(string username, string password)
         {
             driver.Navigate().GoToUrl(url + "login");
@@ -148,6 +149,43 @@ namespace NUnit_Auto_2022.Tests
            lp.Login(username, password);
         }
       
+        private static IEnumerable<TestCaseData>GetCredentialsDb()
+        {
+            // Read the connection string (server=127.0.0.1;user=root;password=Szekelybea12.;port-3306;database=test)
+            DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
+            String conDetails = connString.ConnectionString.DefaultConnection;
+            using (MySqlConnection con = new MySqlConnection(conDetails))
+            {
+                //opening connection
+                con.Open();
+                //prepare to run the query in the DB
+                string query = "select username, password from test.credentialsbt;";
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                //using the q
+                using(var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        yield return new TestCaseData(reader["username"].ToString(), reader["username"].ToString());
+                    }
+                }
+            }
 
+        }
+
+        private static IEnumerable<TestCaseData> GetCredentialsDbEf()
+        {
+            DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
+            String conDetails = connString.ConnectionString.DefaultConnection;
+
+            using (var context = new Others.CredentialsDbContext(conDetails))
+            {
+                var credentials = context.credentials;
+                foreach (var cred in credentials)
+                {
+                    yield return new TestCaseData(cred.username, cred.password);
+                }
+            }
+        }
     }
 }
