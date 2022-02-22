@@ -15,7 +15,7 @@ using MySql.Data.MySqlClient;
 
 namespace NUnit_Auto_2022.Tests
 {
-    class AuthTest :BaseTest
+    class AuthTest : BaseTest
     {
 
         string url = FrameworkConstants.GetUrl();
@@ -30,13 +30,13 @@ namespace NUnit_Auto_2022.Tests
         }
 
         //recomended
-        private static IEnumerable<TestCaseData>GetCredentialsDataCsv()
+        private static IEnumerable<TestCaseData> GetCredentialsDataCsv()
         {
             string path = "TestData\\credentials.csv";
             using (var reader = new StreamReader(path))
             {
                 var index = 0;
-                while(!reader.EndOfStream)
+                while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
@@ -88,7 +88,7 @@ namespace NUnit_Auto_2022.Tests
         private static IEnumerable<TestCaseData> GetCredentialsDataExcel()
         {
             var excelData = Utils.GetDataTableFromExcel("TestData\\credentials.xlsx");
-            for(int i = 0; i < excelData.Rows.Count; i++)
+            for (int i = 0; i < excelData.Rows.Count; i++)
             {
                 yield return new TestCaseData(excelData.Rows[i].ItemArray);
             }
@@ -99,7 +99,7 @@ namespace NUnit_Auto_2022.Tests
             var credentials = Utils.JsonRead<DataModels.Credentials>("TestData\\credentials.json");
             yield return new TestCaseData(credentials.Username, credentials.Password);
 
-           
+
         }
 
         private static IEnumerable<TestCaseData> GetCredentialsDataXml()
@@ -115,11 +115,14 @@ namespace NUnit_Auto_2022.Tests
                 }
             }
 
-       
 
-    }
 
-    [Test, TestCaseSource("GetCredentialsDb")]
+        }
+        [Category("AuthWithDb")]
+        [Category("Smoke")]
+        [Test, Order(2), Category("Smoke"), TestCaseSource("GetCredentialsDb")]
+        //[Parallelizable(ParallelScope.Children)]
+
         public void BasicAuth(string username, string password)
         {
             driver.Navigate().GoToUrl(url + "login");
@@ -141,49 +144,58 @@ namespace NUnit_Auto_2022.Tests
 
         // Test auth with Page factory
         [Test]
-        public void BasicAuthPf([ValueSource("GetUsername")]string username,[ValueSource("GetPassword")]string password)
+        public void BasicAuthPf([ValueSource("GetUsername")] string username, [ValueSource("GetPassword")] string password)
         {
-           driver.Navigate().GoToUrl(url + "login");
-           PageModels.PageFactory.LoginPage lp = new PageModels.PageFactory.LoginPage(driver);
-           Assert.AreEqual("Authentication", lp.CheckPage());
-           lp.Login(username, password);
+            driver.Navigate().GoToUrl(url + "login");
+            PageModels.PageFactory.LoginPage lp = new PageModels.PageFactory.LoginPage(driver);
+            Assert.AreEqual("Authentication", lp.CheckPage());
+            lp.Login(username, password);
         }
-      
-        private static IEnumerable<TestCaseData>GetCredentialsDb()
+
+        private static IEnumerable<TestCaseData> GetCredentialsDb()
         {
             // Read the connection string (server=127.0.0.1;user=root;password=Szekelybea12.;port-3306;database=test)
             DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
             String conDetails = connString.ConnectionString.DefaultConnection;
+
+            // connecting to DB 
             using (MySqlConnection con = new MySqlConnection(conDetails))
             {
-                //opening connection
-                con.Open();
-                //prepare to run the query in the DB
-                string query = "select username, password from test.credentialsbt;";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                //using the q
-                using(var reader = cmd.ExecuteReader())
+                using (MySqlConnection con = new MySqlConnection(FrameworkConstants.decryptedCon))
                 {
-                    while (reader.Read())
+                    //opening connection
+                    con.Open();
+
+
+                    //prepare to run the query in the DB
+                    string query = "select username, password from test.credentialsbt;";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    //using the q
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        yield return new TestCaseData(reader["username"].ToString(), reader["username"].ToString());
+                        while (reader.Read())
+                        {
+                            yield return new TestCaseData(reader["username"].ToString(), reader["username"].ToString());
+                        }
                     }
                 }
+
             }
 
-        }
-
-        private static IEnumerable<TestCaseData> GetCredentialsDbEf()
-        {
-            DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
-            String conDetails = connString.ConnectionString.DefaultConnection;
-
-            using (var context = new Others.CredentialsDbContext(conDetails))
+            private static IEnumerable<TestCaseData> GetCredentialsDbEf()
             {
-                var credentials = context.credentials;
-                foreach (var cred in credentials)
+                DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
+                String conDetails = connString.ConnectionString.DefaultConnection;
+                Console.WriteLine(Utils.Encrypt(conDetails, "btauto2022"));
+                conDetails = Utils.Encrypt(conDetails, "btauto2022");
+
+                using (var context = new Others.CredentialsDbContext(conDetails))
                 {
-                    yield return new TestCaseData(cred.username, cred.password);
+                    var credentials = context.credentials;
+                    foreach (var cred in credentials)
+                    {
+                        yield return new TestCaseData(cred.username, cred.password);
+                    }
                 }
             }
         }

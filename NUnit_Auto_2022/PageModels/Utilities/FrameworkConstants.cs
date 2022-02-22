@@ -10,6 +10,7 @@ namespace NUnit_Auto_2022.PageModels.Utilities
         const string hostname = "86.121.249.150";
         const string port = "4999";
         const string path = "/#/";
+        internal static string decryptedCon;
 
         public static string GetUrl()
         {

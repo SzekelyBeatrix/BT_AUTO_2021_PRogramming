@@ -11,6 +11,7 @@ namespace NUnit_Auto_2022.PageModels.POM
     class BaseTest
     {
         public IWebDriver driver;
+        public static string conDetails;
 
         // Before each test
         [SetUp]
@@ -18,6 +19,8 @@ namespace NUnit_Auto_2022.PageModels.POM
         {
             // Instatiate the browser using the Browser Factory class created in Utilities
             driver = Browser.GetDriver(WebBrowsers.Chrome);
+
+            DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
         }
 
         // After each test
