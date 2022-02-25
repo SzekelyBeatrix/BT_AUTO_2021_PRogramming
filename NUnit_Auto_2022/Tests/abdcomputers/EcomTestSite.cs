@@ -14,8 +14,8 @@ namespace NUnit_Auto_2022.Tests
         [Test]
         public void LoginTest()
         {
-            driver.Navigate().GoToUrl("https://www.abdcomputer.ro/");
-            LandingPage lp = new LandingPage(driver);
+            _driver.Navigate().GoToUrl("https://www.abdcomputer.ro/");
+            LandingPage lp = new LandingPage(_driver);
             Assert.AreEqual("Produse IT Renew, Refurbish, Noi & SH", lp.CheckPage());
             lp.LoginNavigate();
 
@@ -24,10 +24,10 @@ namespace NUnit_Auto_2022.Tests
         [Test]
         public void RegisterUnchecked()
         {
-            driver.Navigate().GoToUrl("https://www.abdcomputer.ro/");
-            LandingPage lp = new LandingPage(driver);
+            _driver.Navigate().GoToUrl("https://www.abdcomputer.ro/");
+            LandingPage lp = new LandingPage(_driver);
             lp.LoginNavigate();
-            RegisterPage rp = new RegisterPage(driver);
+            RegisterPage rp = new RegisterPage(_driver);
             Assert.AreEqual("Sunt client nou", rp.CheckPage());
             rp.AcceptCookies();
             rp.Register("aaaa", "bbbb", "077777770", "aaaa@aaaa.com", "Abc123$");

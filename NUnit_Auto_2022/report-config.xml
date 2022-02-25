@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<extentreports>
+	<configuration>
+		<theme>standrad</theme>
+		<encoding>UTF-8</encoding>
+		<protocol>https</protocol>
+		<documentTitle>BT AUTO 2022 TEST REPORT</documentTitle>
+		<reportName> BT AUTO 2022 REPORT</reportName>
+		<reportHeadline>BT AUTO 2022</reportHeadline>
+		<dateFormar>yyyy-MM-dd</dateFormar>
+		<timeFormat>HH:mm:ss</timeFormat>
+		<script>
+			<![CDATA[$(document).ready(function() { });]]>
+		</script>
+		<styles>
+			<![CDATA[]]>
+		</styles>
+
+	</configuration>
+</extentreports>

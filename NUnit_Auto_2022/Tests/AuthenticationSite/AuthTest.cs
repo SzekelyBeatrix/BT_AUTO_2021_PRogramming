@@ -125,12 +125,15 @@ namespace NUnit_Auto_2022.Tests
 
         public void BasicAuth(string username, string password)
         {
-            driver.Navigate().GoToUrl(url + "login");
+            _driver.Navigate().GoToUrl(url + "login");
             // This is beacuse we have 2 classes named LoginPage one on POM other on PageFactory
             // In real life framework you will have just one type of desigm pattern (POM/PF)
-            PageModels.POM.LoginPage lp = new PageModels.POM.LoginPage(driver);
+            PageModels.POM.LoginPage lp = new PageModels.POM.LoginPage(_driver);
             Assert.AreEqual("Authentication", lp.CheckPage());
             lp.Login(username, password);
+            String contextName = TestContext.CurrentContext.Test.Name;
+            testName = contextName;
+            _test = _extent.CreateTest(contextName);
         }
 
         private static string[] GetUsername = new string[]
@@ -146,43 +149,37 @@ namespace NUnit_Auto_2022.Tests
         [Test]
         public void BasicAuthPf([ValueSource("GetUsername")] string username, [ValueSource("GetPassword")] string password)
         {
-            driver.Navigate().GoToUrl(url + "login");
-            PageModels.PageFactory.LoginPage lp = new PageModels.PageFactory.LoginPage(driver);
+            _driver.Navigate().GoToUrl(url + "login");
+            PageModels.PageFactory.LoginPage lp = new PageModels.PageFactory.LoginPage(_driver);
             Assert.AreEqual("Authentication", lp.CheckPage());
             lp.Login(username, password);
         }
 
         private static IEnumerable<TestCaseData> GetCredentialsDb()
         {
-            // Read the connection string (server=127.0.0.1;user=root;password=Szekelybea12.;port-3306;database=test)
-            DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
-            String conDetails = connString.ConnectionString.DefaultConnection;
 
             // connecting to DB 
-            using (MySqlConnection con = new MySqlConnection(conDetails))
+            using (MySqlConnection con = new MySqlConnection(FrameworkConstants.decryptedCon))
             {
-                using (MySqlConnection con = new MySqlConnection(FrameworkConstants.decryptedCon))
+                //opening connection
+                con.Open();
+                // prepare to run the query in the DB
+                string query = "select username, password from test.credentialsbt;";
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                //run the query in the db and get the data row by row
+                using (var reader = cmd.ExecuteReader())
                 {
-                    //opening connection
-                    con.Open();
-
-
-                    //prepare to run the query in the DB
-                    string query = "select username, password from test.credentialsbt;";
-                    MySqlCommand cmd = new MySqlCommand(query, con);
-                    //using the q
-                    using (var reader = cmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            yield return new TestCaseData(reader["username"].ToString(), reader["username"].ToString());
-                        }
+                        yield return new TestCaseData(reader["username"].ToString(), reader["password"].ToString());
                     }
                 }
 
             }
 
-            private static IEnumerable<TestCaseData> GetCredentialsDbEf()
+        }
+
+        private static IEnumerable<TestCaseData> GetCredentialsDbEf()
             {
                 DataModels.DbConnString connString = Utils.JsonRead<DataModels.DbConnString>("appsetings.json");
                 String conDetails = connString.ConnectionString.DefaultConnection;
@@ -200,4 +197,3 @@ namespace NUnit_Auto_2022.Tests
             }
         }
     }
-}

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualBasic.FileIO;
 using NPOI.XSSF.UserModel;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -16,6 +17,8 @@ namespace NUnit_Auto_2022
 {
     public class Utils
     {
+        public static string screenShot { get; private set; }
+
         public static IWebElement WaitForElement(IWebDriver driver, int seconds, By locator)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(seconds));
@@ -253,5 +256,10 @@ namespace NUnit_Auto_2022
             }
         }
 
+        public static MediaEntityModelProvider CaptureScreenshot(IWebDriver driver, string name)
+        {
+            var screenshot = ((ITakesScreenshot)driver).GetScreenshot().AsBase64EncodedString;
+            return MediaEntityBuilder.CreateScreenCaptureFromBase64String(screenShot, name).Build();
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace NUnit_Auto_2022.PageModels.PageFactory
         private IWebElement submitButtonElem => driver.FindElement(By.ClassName("btn-primary"));
 
 
-        //Login page constructor that initializes the driver
+        //Login page constructor that initializes the _driver
         public LoginPage(IWebDriver driver)
         {
             this.driver = driver;

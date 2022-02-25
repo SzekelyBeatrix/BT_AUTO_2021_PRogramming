@@ -161,7 +161,7 @@ namespace NUnit_Auto_2022
             string url = protocol + "://" + hostname + ":8081/lazy.html";
             driver.Navigate().GoToUrl(url);
 
-            /*DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver);
+            /*DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(_driver);
             fluentWait.Timeout = TimeSpan.FromSeconds(20);
             fluentWait.PollingInterval = TimeSpan.FromMilliseconds(100);
             fluentWait.Message = "Sorry !! The element in the page can not be found!!";
@@ -232,7 +232,7 @@ namespace NUnit_Auto_2022
             driver.Navigate().GoToUrl(url + "hover");
             
             var hoverButton = driver.FindElement(By.CssSelector("#root > div > div.content > div > div.container-table.text-center.container > div > button"));
-            //var hoverButton = driver.FindElement(By.ClassName("btn btn-outline-info"));
+            //var hoverButton = _driver.FindElement(By.ClassName("btn btn-outline-info"));
 
 
             Actions actions = new Actions(driver);
@@ -251,7 +251,7 @@ namespace NUnit_Auto_2022
             /*foreach (var item in allItems)
             {
                 var text = item.Text;
-                var resultTxt = driver.FindElement(By.Id("result"));
+                var resultTxt = _driver.FindElement(By.Id("result"));
                 Assert.AreEqual(String.Format("You last clicked me!", text), resultTxt);
             }*/
 

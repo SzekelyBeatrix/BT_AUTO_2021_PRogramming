@@ -11,7 +11,7 @@ namespace NUnit_Auto_2022
 {
     class SeleniumTests
     {
-       // string path = "C:Desktop\\driver";
+       // string path = "C:Desktop\\_driver";
         IWebDriver driver;
         const string protocol = "https";
         const string hostname = "magazinulcolectionarului.ro/";
@@ -23,8 +23,8 @@ namespace NUnit_Auto_2022
         public void Setup()
         {
             driver = new ChromeDriver();
-            //driver = new FirefoxDriver();
-           // driver = new EdgeDriver();
+            //_driver = new FirefoxDriver();
+           // _driver = new EdgeDriver();
             
         }
 
@@ -33,11 +33,11 @@ namespace NUnit_Auto_2022
         {
 
 
-            //driver.Url = "https://google.com"; 
+            //_driver.Url = "https://google.com"; 
            driver.Url = url; //am declarat mai sus calea
            driver.Navigate();
 
-            // driver.Navigate().GoToUrl("https://google.com");
+            // _driver.Navigate().GoToUrl("https://google.com");
 
             driver.Navigate().Back();
 
@@ -61,10 +61,10 @@ namespace NUnit_Auto_2022
             IWebElement body = driver.FindElement(By.ClassName("modal-header"));
             body.Click();
 
-            /*IWebElement cookieAccept1 = driver.FindElement(By.CssSelector(""));
+            /*IWebElement cookieAccept1 = _driver.FindElement(By.CssSelector(""));
             cookieAccept1.Click();
 
-            IWebElement cookieAccept2 = driver.FindElement(By.XPath(""));
+            IWebElement cookieAccept2 = _driver.FindElement(By.XPath(""));
             cookieAccept2.Click();*/
 
             IWebElement eaglemoss = driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/div[2]/nav/div/ul/li[1]/a/span[2]"));

@@ -11,7 +11,7 @@ namespace NUnit_Auto_2022.Tests.emag
         [Test]
         public void Test01()
         {
-            driver.Navigate().GoToUrl("https://emag.ro");
+            _driver.Navigate().GoToUrl("https://emag.ro");
         }
     }
 }

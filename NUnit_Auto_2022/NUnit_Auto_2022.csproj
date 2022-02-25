@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="ExtentReports" Version="4.1.0" />
+    <PackageReference Include="ExtentReports.Core" Version="1.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />
     <PackageReference Include="MySql.Data" Version="8.0.28" />
     <PackageReference Include="NPOI" Version="2.5.5" />
@@ -30,7 +32,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy /y $(ProjectDir)\*.properties $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestData\*.* &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.json $(ProjectDir)$(OutDir)\&#xD;&#xA;&#xD;&#xA;" />
+    <Exec Command="xcopy /y $(ProjectDir)\*.properties $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestData\*.* &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.json $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.xml $(ProjectDir)$(OutDir)\&#xD;&#xA;&#xD;&#xA;" />
   </Target>
 
  

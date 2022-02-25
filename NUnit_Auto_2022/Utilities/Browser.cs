@@ -11,16 +11,16 @@ namespace NUnit_Auto_2022.Utilities
 {
     public class Browser
 {
-    // Return a driver, based on the enum WebBrowsers and set up the options baed on the cfg file
+    // Return a _driver, based on the enum WebBrowsers and set up the options baed on the cfg file
     public static IWebDriver GetDriver(WebBrowsers browserType)
     {
         switch (browserType)
         {
-            // Instantiate a chrome driver
+            // Instantiate a chrome _driver
             case WebBrowsers.Chrome:
                 {
                     var options = new ChromeOptions();
-                    // Options for the driver based on flags from FrameworkConstants
+                    // Options for the _driver based on flags from FrameworkConstants
                     if (FrameworkConstants.startMaximized)
                     {
                         options.AddArgument("--start-maximized");
@@ -43,7 +43,7 @@ namespace NUnit_Auto_2022.Utilities
                     {
                         options.Proxy = proxy;
                     }
-                    // Intiatiate chrome driver with options
+                    // Intiatiate chrome _driver with options
                     return new ChromeDriver(options);
                 }
             case WebBrowsers.Firefox:
@@ -68,7 +68,7 @@ namespace NUnit_Auto_2022.Utilities
                         fProfile.AddExtension(FrameworkConstants.GetExtensionName(browserType));
                     }
                     firefoxOptions.Profile = fProfile;
-                    // Instantiate Frefix driver with options
+                    // Instantiate Frefix _driver with options
                     return new FirefoxDriver(firefoxOptions);
                 }
             case WebBrowsers.Edge:
@@ -87,12 +87,12 @@ namespace NUnit_Auto_2022.Utilities
                     {
                         edgeOptions.AddExtension(FrameworkConstants.GetExtensionName(browserType));
                     }
-                    // Instatiate Edge driver with options defined
+                    // Instatiate Edge _driver with options defined
                     return new EdgeDriver(edgeOptions);
                 }
             default:
                 {
-                    // If the driver specified is not implemented
+                    // If the _driver specified is not implemented
                     throw new BrowserTypeException(browserType.ToString());
                 }
 
@@ -100,7 +100,7 @@ namespace NUnit_Auto_2022.Utilities
     }
 
 
-    // This method will provide a driver, based on the config file browser attribute
+    // This method will provide a _driver, based on the config file browser attribute
     public static IWebDriver GetDriver()
     {
         WebBrowsers cfgBrowser;
