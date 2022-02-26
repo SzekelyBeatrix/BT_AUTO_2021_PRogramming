@@ -25,11 +25,11 @@ namespace Final_Project.PageModels
             var loginPageEl = driver.FindElement(By.ClassName(loginPageText));
             return loginPageEl.Text;
         }
-        public void Login(string user, string passw)
+        public void Login(string email, string passw)
         {
             var emailInputElement = driver.FindElement(By.Id(emailInput));
             emailInputElement.Clear();
-            emailInputElement.SendKeys(user);
+            emailInputElement.SendKeys(email);
             var passwordInputElement = driver.FindElement(By.Id(passwordInput));
             passwordInputElement.Clear();
             passwordInputElement.SendKeys(passw);
