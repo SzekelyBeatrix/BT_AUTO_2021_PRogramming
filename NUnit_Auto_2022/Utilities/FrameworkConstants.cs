@@ -68,5 +68,17 @@ namespace NUnit_Auto_2022.Utilities
             Console.WriteLine("No env variable, reading from file");
             return Boolean.Parse(configData["headless"]);
         }
+
+        static Dictionary<string, string> apiConfigData = Utils.ReadConfig("apiconfig.properties");
+        static string apiprotocol = apiConfigData["protocol"];
+        static string apihostname = apiConfigData["apihost"];
+        static string directionsApi = apiConfigData["directionsapi"];
+        static string apiKey = Utils.Decrypt(apiConfigData["apikey"], "btauto2022");
+
+        public static string GetApiUrl()
+        {
+            return String.Format("{0}://{1}{2}?key={3}", apiprotocol, apihostname, directionsApi);
+        }
+
     }
 }

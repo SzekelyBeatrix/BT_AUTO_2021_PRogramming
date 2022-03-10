@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Final_Project.PageModels
 {
-    class ResetPasswordPage : BasePage
+    class TrackYourOrderPage : BasePage
     {
-        public ResetPasswordPage(IWebDriver driver) : base(driver)
+        public TrackYourOrderPage(IWebDriver driver) : base(driver)
         {
         }
     }
