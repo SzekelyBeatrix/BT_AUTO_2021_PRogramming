@@ -25,8 +25,8 @@ namespace NUnit_Auto_2022.FrameworkArchitecture.Tests.TestAPI
 
         private static IEnumerable<TestCaseData> GetRequestData()
         {
-            var paramsList = Utils.ConvertCsvToDictionary("TestData\\TestDataAPI\\directionsData.csv");
-            var resultsList = Utils.ConvertCsvToDictionary("TestData\\TestDataAPI\\directionsValidations.csv");
+            var paramsList = Utils.ConvertCsvToDictionary("TestDataAPI\\directionsData.csv");
+            var resultsList = Utils.ConvertCsvToDictionary("TestDataAPI\\directionsValidations.csv");
 
             if (paramsList.Count == resultsList.Count)
             {
@@ -76,7 +76,7 @@ namespace NUnit_Auto_2022.FrameworkArchitecture.Tests.TestAPI
         {
 
             Dictionary<string, string> postQueryParams = new Dictionary<string, string>();
-            postQueryParams.Add("outformat", queryParams["outformat"]);
+            postQueryParams.Add("outFormat", queryParams["outFormat"]);
             string url = GetUrl(Utils.ConvertDictionaryToQuery(postQueryParams));
             string jsonBody = System.Text.Json.JsonSerializer.Serialize(GetPostData(queryParams));
             var request = new RestRequest(url, Method.Post);

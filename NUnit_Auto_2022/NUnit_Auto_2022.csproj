@@ -28,15 +28,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HomeworkTest\HomeworkTest.csproj" />
+    <ProjectReference Include="..\Homework\Homework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="FrameworkArchitecture\Tests\TestAPI\" />
     <Folder Include="Other\" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy /y $(ProjectDir)\*.properties $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestData\*.* &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestDataApi\*.* &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.json $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.xml $(ProjectDir)$(OutDir)\&#xD;&#xA;&#xD;&#xA;" />
+    <Exec Command="xcopy /y $(ProjectDir)\*.properties $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestData\*.* &amp;&#xD;&#xA;&#xD;xcopy /y $(ProjectDir)\TestData\*.* $(ProjectDir)$(OutDir)\TestDataAPI\*.* &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.json $(ProjectDir)$(OutDir)\ &amp;&#xD;&#xA;xcopy /y $(ProjectDir)\*.xml $(ProjectDir)$(OutDir)\&#xD;&#xA;&#xD;&#xA;" />
   </Target>
 
  
