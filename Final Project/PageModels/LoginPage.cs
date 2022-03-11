@@ -22,7 +22,7 @@ namespace Final_Project.PageModels
         }
         public string CheckPage()
         {
-            var loginPageEl = driver.FindElement(By.ClassName(loginPageText));
+            var loginPageEl = driver.FindElement(By.Id(loginPageText));
             return loginPageEl.Text;
         }
         public void Login(string email, string passw)

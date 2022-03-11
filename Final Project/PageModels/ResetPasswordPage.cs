@@ -8,7 +8,7 @@ namespace Final_Project.PageModels
     class ResetPasswordPage : BasePage
     {
 
-        const string ResetPassTextSelector = "#recover-password > h2";
+        const string ResetPassTextSelector = "#recover-password > h2"; //css
         const string resetemailLabelSelector = "#recover-password > div > form > div.form-group > label";
         const string resetemailInputSelector = "loginInputName";
         const string resetButtonSelector = "#recover-password > div > form > div.row > div:nth-child(1) > div > button";
