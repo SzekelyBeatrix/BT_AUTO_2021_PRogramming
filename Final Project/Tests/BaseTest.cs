@@ -14,7 +14,7 @@ namespace Final_Project.Tests
         [SetUp]
         public void Setup()
         {
-            driver = Browser.GetDriver(WebBrowsers.Chrome);
+            
         }
 
         [TearDown]
