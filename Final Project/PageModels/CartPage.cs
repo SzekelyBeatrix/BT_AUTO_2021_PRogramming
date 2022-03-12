@@ -27,5 +27,9 @@ namespace Final_Project.PageModels
         {
 
         }
+        public string CheckPage()
+        {
+            return driver.FindElement(By.CssSelector(emptyCartText)).Text; //de verificat aici daca nu e mai ok cu shopping Carttext
+        }
     }
 }
