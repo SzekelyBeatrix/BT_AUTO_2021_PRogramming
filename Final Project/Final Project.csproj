@@ -17,8 +17,11 @@
   <ItemGroup>
     <Folder Include="DataModels\" />
     <Folder Include="Others\" />
-    <Folder Include="Utils\" />
     <Folder Include="TestData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NUnit_Auto_2022\NUnit_Auto_2022.csproj" />
   </ItemGroup>
 
 </Project>
